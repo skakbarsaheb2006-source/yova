@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yova Collections | Premium Rolled Gold & Handmade Jewellery</title>
+  <meta name="description" content="Discover exquisite rolled gold and artisanal handmade rolled gold jewellery at Yova Collections. South Indian temple jewellery, bridal harams, chokers, bangles, and jhumkas. Order directly on WhatsApp.">
+  <meta name="keywords" content="Yova Collections, Rolled Gold Jewellery, Handmade Rolled Gold, South Indian Jewellery, Temple Jewellery, Kemp Choker, Antique Bangles, Jhumkas, WhatsApp Jewellery Shopping">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yova Collections | Luxury Rolled Gold Jewellery">
+  <meta property="og:description" content="Handcrafted rolled gold jewellery with the timeless radiance of real gold. WhatsApp Order: 9701959456.">
+  <meta property="og:image" content="images/hero_jewellery.jpg">
+
+  <!-- Google Fonts: Playfair Display + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" onclick="switchPage('home')" aria-label="YOVA COLLECTIONS Home">
+        <img src="images/yova_logo.png" alt="YOVA COLLECTIONS - Premium Rolled Gold & Handmade Jewellery" class="header-logo-img">
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active" data-page="home" data-i18n="nav_home">Home</a>
+        <a href="#products" class="nav-link" data-page="products" data-i18n="nav_products">Products</a>
+        <a href="#about" class="nav-link" data-page="about" data-i18n="nav_about">About Us</a>
+        <a href="#gallery" class="nav-link" data-page="gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#contact" class="nav-link" data-page="contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <!-- Right Header Actions: Language Switcher & Quick WhatsApp CTA -->
+      <div class="header-actions">
+        <!-- Modern Language Dropdown Selector -->
+        <div class="lang-selector-wrapper">
+          <button class="lang-btn" id="langSelectorBtn" aria-expanded="false" aria-label="Select Language">
+            <svg class="icon globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+            <span id="currentLangLabel">English</span>
+            <svg class="icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button class="lang-option active" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+              <span class="lang-code">EN</span>
+            </button>
+            <button class="lang-option" data-lang="te">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">తెలుగు</span>
+              <span class="lang-code">TE</span>
+            </button>
+            <button class="lang-option" data-lang="hi">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">हिन्दी</span>
+              <span class="lang-code">HI</span>
+            </button>
+            <button class="lang-option" data-lang="ta">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">தமிழ்</span>
+              <span class="lang-code">TA</span>
+            </button>
+            <button class="lang-option" data-lang="kn">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">ಕನ್ನಡ</span>
+              <span class="lang-code">KN</span>
+            </button>
+            <button class="lang-option" data-lang="ml">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">മലയാളം</span>
+              <span class="lang-code">ML</span>
+            </button>
+            <button class="lang-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+              <span class="lang-code">ES</span>
+            </button>
+            <button class="lang-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+              <span class="lang-code">FR</span>
+            </button>
+            <button class="lang-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+              <span class="lang-code">DE</span>
+            </button>
+            <button class="lang-option" data-lang="ar">
+              <span class="lang-flag">🇦🇪</span>
+              <span class="lang-name">العربية</span>
+              <span class="lang-code">AR</span>
+            </button>
+            <button class="lang-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
+              <span class="lang-code">ZH</span>
+            </button>
+            <button class="lang-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+              <span class="lang-code">JA</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Header Cart Button -->
+        <button class="btn btn-header-cart" id="headerCartBtn" onclick="openCartDrawer()" aria-label="Shopping Cart">
+          <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="btn-text" data-i18n="cart">Cart</span>
+          <span class="cart-badge" id="headerCartBadge" style="display: none;">0</span>
+        </button>
+
+        <!-- Header WhatsApp Button -->
+        <a href="https://wa.me/919701959456?text=Hi%20Yova%20Collections%2C%20I%20would%20like%20to%20explore%20your%20jewellery%20catalogue." target="_blank" rel="noopener" class="btn btn-header-wa">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+          <span class="btn-text" data-i18n="order_on_wa">Order on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <a href="#home" class="brand-logo" onclick="closeDrawer(); switchPage('home');" aria-label="YOVA COLLECTIONS Home">
+          <img src="images/yova_logo.png" alt="YOVA COLLECTIONS Logo" class="drawer-logo-img">
+        </a>
+        <button class="drawer-close" id="drawerClose" aria-label="Close Menu">✕</button>
+      </div>
+
+      <div class="mobile-lang-pills">
+        <div class="lang-pills-label" data-i18n="select_language">Language / భాష / भाषा:</div>
+        <div class="pills-group">
+          <button class="pill-btn active" data-lang="en">English</button>
+          <button class="pill-btn" data-lang="te">తెలుగు</button>
+          <button class="pill-btn" data-lang="hi">हिन्दी</button>
+          <button class="pill-btn" data-lang="ta">தமிழ்</button>
+          <button class="pill-btn" data-lang="kn">ಕನ್ನಡ</button>
+          <button class="pill-btn" data-lang="ml">മലയാളം</button>
+          <button class="pill-btn" data-lang="es">Español</button>
+          <button class="pill-btn" data-lang="fr">Français</button>
+          <button class="pill-btn" data-lang="de">Deutsch</button>
+          <button class="pill-btn" data-lang="ar">العربية</button>
+          <button class="pill-btn" data-lang="zh">中文</button>
+          <button class="pill-btn" data-lang="ja">日本語</button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-link active" data-page="home" onclick="closeDrawer(); switchPage('home');">
+          <span data-i18n="nav_home">Home</span> <span>→</span>
+        </a>
+        <a href="#products" class="mobile-link" data-page="products" onclick="closeDrawer(); switchPage('products');">
+          <span data-i18n="nav_products">Products</span> <span>→</span>
+        </a>
+        <a href="#about" class="mobile-link" data-page="about" onclick="closeDrawer(); switchPage('about');">
+          <span data-i18n="nav_about">About Us</span> <span>→</span>
+        </a>
+        <a href="#gallery" class="mobile-link" data-page="gallery" onclick="closeDrawer(); switchPage('gallery');">
+          <span data-i18n="nav_gallery">Gallery</span> <span>→</span>
+        </a>
+        <a href="#contact" class="mobile-link" data-page="contact" onclick="closeDrawer(); switchPage('contact');">
+          <span data-i18n="nav_contact">Contact</span> <span>→</span>
+        </a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <a href="https://wa.me/919701959456" target="_blank" rel="noopener" class="btn btn-wa-full">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+          <span data-i18n="chat_on_wa">Chat on WhatsApp (9701959456)</span>
+        </a>
+        <a href="https://instagram.com/yovacollections" target="_blank" rel="noopener" class="btn btn-insta-full">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Instagram: Yova Collections</span>
+        </a>
+      </div>
+    </div>
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT PAGES ==================== -->
+  <main id="mainApp">
+
+    <!-- 0. OPENING WELCOME PAGE (SPLASH / ENTRANCE) -->
+    <section id="page-welcome" class="page-view active">
+      <div class="welcome-screen">
+        <div class="welcome-bg-glow"></div>
+        <div class="container welcome-container">
+          <div class="welcome-card">
+            <!-- Center Brand Logo -->
+            <div class="welcome-logo-box">
+              <img src="images/yova_logo.png" alt="YOVA COLLECTIONS" class="welcome-logo">
+            </div>
+
+            <!-- Filigree Gold Divider -->
+            <div class="gold-divider welcome-divider"><span>✦</span></div>
+
+            <!-- Taglines -->
+            <div class="welcome-taglines">
+              <p class="welcome-tagline-item tagline-1">“Timeless Gold. Crafted for You.”</p>
+              <p class="welcome-tagline-item tagline-2">“Where Every Moment Shines.”</p>
+              <p class="welcome-tagline-item tagline-3">“Luxury for Every Celebration.”</p>
+            </div>
+
+            <!-- Enter Collection CTA Button -->
+            <div class="welcome-action">
+              <a href="#home" class="btn btn-welcome-enter" onclick="switchPage('home')">
+                <span>Enter Collection</span>
+                <span class="btn-arrow">→</span>
+              </a>
+            </div>
+
+            <!-- Subtle Trust Note -->
+            <div class="welcome-footer-note">
+              <span>✦ South Indian Rolled Gold & Artisanal Handmade Jewellery ✦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. HOME VIEW -->
+    <section id="page-home" class="page-view">
+      <!-- Luxury Hero Section with Emerald Backdrop & Gold Glow -->
+      <div class="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="sparkle">✦</span>
+              <span data-i18n="hero_badge">Premium Gold Finish</span>
+            </div>
+            <h1 class="hero-title">
+              <span data-i18n="hero_title_1">Beautiful Jewellery for</span><br>
+              <span class="gold-gradient-text" data-i18n="hero_title_2">Every Occasion</span>
+            </h1>
+            <p class="hero-description" data-i18n="hero_desc">
+              Elegant rolled gold jewellery with a rich gold look, lasting shine, and comfortable everyday wear.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#products" class="btn btn-primary" onclick="switchPage('products')">
+                <span data-i18n="explore_collection">Explore Collection</span>
+                <span class="arrow-icon">→</span>
+              </a>
+              <a href="https://wa.me/919701959456?text=Hi%20Yova%20Collections%2C%20I%20would%20like%20to%20place%20an%20order%20or%20inquire%20about%20your%20jewellery." target="_blank" rel="noopener" class="btn btn-emerald-wa">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+                <span data-i18n="order_on_whatsapp">WhatsApp Order</span>
+              </a>
+            </div>
+            <!-- Trust USPs mini row -->
+            <div class="hero-trust-row">
+              <div class="trust-item">
+                <span class="trust-icon">💎</span>
+                <span data-i18n="trust_quality">100% Guaranteed Rolled Gold</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-icon">✨</span>
+                <span data-i18n="trust_handmade">Artisanal Handmade Finish</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-icon">📦</span>
+                <span data-i18n="trust_shipping">Safe Doorstep Delivery</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="hero-card-frame">
+              <div class="hero-gold-glow"></div>
+              <img src="images/bridal_jewellery_set_burgundy.jpg" alt="Premium Bridal Jewellery Set on Burgundy Velvet" class="hero-image" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Pillars Section (Deep Emerald Glass) -->
+      <section class="trust-pillars-section">
+        <div class="container pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">🏆</div>
+            <h3 data-i18n="pillar_1_title">Authentic Rolled Gold</h3>
+            <p data-i18n="pillar_1_desc">Premium rolled gold jewellery with a lasting shine, crafted for comfortable everyday wear and a gentle feel on your skin.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon-box">🖐️</div>
+            <h3 data-i18n="pillar_2_title">Handcrafted by Masters</h3>
+            <p data-i18n="pillar_2_desc">Every nakshi, peacock, and floral motif is delicately crafted by skilled generational artisans.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon-box">💬</div>
+            <h3 data-i18n="pillar_3_title">Instant WhatsApp Orders</h3>
+            <p data-i18n="pillar_3_desc">Direct one-tap chat with our jewellery specialists for custom sizing, real live video previews, and quick delivery.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon-box">⭐</div>
+            <h3 data-i18n="pillar_4_title">Transparent Pricing</h3>
+            <p data-i18n="pillar_4_desc">Direct artisan-to-customer pricing without showroom markups. Luxury within your reach.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Collections Showcase -->
+      <section class="section-padding bg-cream">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="section-tag" data-i18n="tag_curated">CURATED EXCELLENCE</div>
+            <h2 class="section-title" data-i18n="bestsellers_title">Our Bestselling Creations</h2>
+            <div class="gold-divider"><span>✦</span></div>
+            <p class="section-subtitle" data-i18n="bestsellers_sub">Adorn yourself with traditional elegance and royal charm crafted for weddings and celebrations.</p>
+          </div>
+
+          <!-- Dynamic Featured Products Grid (Populated via JS) -->
+          <div class="products-grid" id="featuredProductsGrid">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="text-center view-all-box">
+            <a href="#products" class="btn btn-secondary" onclick="switchPage('products')">
+              <span data-i18n="view_all_products">View Full Jewellery Catalogue</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Emerald Brand Story Spotlight -->
+      <section class="emerald-spotlight-section">
+        <div class="container spotlight-grid">
+          <div class="spotlight-image-wrapper">
+            <img src="images/temple_haram.jpg" alt="South Indian Rolled Gold Temple Haram" class="spotlight-img">
+            <div class="spotlight-badge">
+              <span class="spotlight-badge-num">100%</span>
+              <span class="spotlight-badge-text" data-i18n="handmade_purity">Artisanal Craftsmanship</span>
+            </div>
+          </div>
+          <div class="spotlight-text">
+            <div class="section-tag gold-text" data-i18n="the_yova_legacy">THE YOVA LEGACY</div>
+            <h2 class="spotlight-title" data-i18n="spotlight_heading">Why Traditional Rolled Gold is the Smarter Luxury</h2>
+            <p data-i18n="spotlight_p1">
+              At <strong>Yova Collections</strong>, we bridge heritage temple artistry with modern elegance. Our rolled gold jewellery features heavy sheets of gold mechanically fused to premium brass/copper bases, delivering the exact warm glow and weight of 22-karat solid gold.
+            </p>
+            <p data-i18n="spotlight_p2">
+              Unlike ordinary thin gold plating that fades quickly, our handmade rolled gold pieces retain their brilliance for years when cared for. Designed for weddings, grand festivals, and daily grace.
+            </p>
+            <div class="spotlight-features">
+              <div class="feat-point">
+                <span class="feat-check">✓</span>
+                <span data-i18n="feat_1">Rich 22K Royal Look & Feel</span>
+              </div>
+              <div class="feat-point">
+                <span class="feat-check">✓</span>
+                <span data-i18n="feat_2">Lead & Nickel Safe / Hypoallergenic</span>
+              </div>
+              <div class="feat-point">
+                <span class="feat-check">✓</span>
+                <span data-i18n="feat_3">Live Video Call Preview on WhatsApp</span>
+              </div>
+              <div class="feat-point">
+                <span class="feat-check">✓</span>
+                <span data-i18n="feat_4">Pan-India Express Safe Shipping</span>
+              </div>
+            </div>
+            <div class="spotlight-cta">
+              <a href="https://wa.me/919701959456?text=Hi%20Yova%20Collections%2C%20I%20would%20like%20to%20see%20a%20video%20call%20preview%20of%20your%20jewellery." target="_blank" rel="noopener" class="btn btn-primary">
+                <span data-i18n="request_video_preview">Request Video Call Preview</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Testimonials Section -->
+      <section class="section-padding bg-cream">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="section-tag" data-i18n="tag_reviews">HAPPY PATRONS</div>
+            <h2 class="section-title" data-i18n="reviews_title">Loved by Jewellery Connoisseurs</h2>
+            <div class="gold-divider"><span>✦</span></div>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="testi-quote" data-i18n="review_1_text">"The rolled gold Lakshmi temple haram looks indistinguishable from real 22k gold! All my relatives at my cousin's wedding thought it was solid gold. Thank you Yova Collections!"</p>
+              <div class="testi-author">
+                <div class="author-avatar">SL</div>
+                <div>
+                  <div class="author-name">Sowmya Lakshmi</div>
+                  <div class="author-loc">Hyderabad, Telangana</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="testi-quote" data-i18n="review_2_text">"Ordered the handmade peacock kadas via WhatsApp. The response was super quick, they showed me close-up videos, and delivered within 3 days in safe packaging. Extremely satisfied!"</p>
+              <div class="testi-author">
+                <div class="author-avatar">PR</div>
+                <div>
+                  <div class="author-name">Priyanka Reddy</div>
+                  <div class="author-loc">Bengaluru, Karnataka</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="testi-quote" data-i18n="review_3_text">"Quality of the Gutpusalu necklace is top-notch! The pearls and kemp stones have such a royal antique sheen. Very convenient to order on WhatsApp with just one click."</p>
+              <div class="testi-author">
+                <div class="author-avatar">AK</div>
+                <div>
+                  <div class="author-name">Ananya Sharma</div>
+                  <div class="author-loc">Vijayawada, AP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instagram Showcase Banner -->
+      <section class="insta-banner-section">
+        <div class="container text-center">
+          <div class="insta-icon-wrapper">
+            <svg class="icon insta-large-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <h3 class="insta-heading" data-i18n="follow_insta">Join Our Growing Community on Instagram</h3>
+          <p class="insta-sub" data-i18n="insta_desc">Follow @YovaCollections for daily updates, customer styling reels, and new design drops.</p>
+          <a href="https://instagram.com/yovacollections" target="_blank" rel="noopener" class="btn btn-gold">
+            <span>Instagram: Yova Collections</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <!-- 2. PRODUCTS CATALOG VIEW -->
+    <section id="page-products" class="page-view">
+      <div class="container products-page-container">
+        <!-- Search, Filter & Sort Controls -->
+        <div class="catalog-controls">
+          <!-- Search Bar -->
+          <div class="search-box">
+            <svg class="icon search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="productSearchInput" placeholder="Search by name, necklace, jhumka, bangles..." aria-label="Search Jewellery">
+            <button id="clearSearchBtn" class="clear-search-btn" style="display:none;" aria-label="Clear Search">✕</button>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="filter-pills-row" id="categoryFilterRow">
+            <button class="filter-pill active" data-category="all" data-i18n="filter_all">All Pieces</button>
+            <button class="filter-pill" data-category="handmade" data-i18n="filter_handmade">Handmade Rolled Gold</button>
+            <button class="filter-pill" data-category="rolled-gold" data-i18n="filter_rolled_gold">Rolled Gold Classics</button>
+            <button class="filter-pill" data-category="necklaces" data-i18n="filter_necklaces">Necklaces & Chokers</button>
+            <button class="filter-pill" data-category="bangles" data-i18n="filter_bangles">Bangles & Kadas</button>
+            <button class="filter-pill" data-category="earrings" data-i18n="filter_earrings">Earrings & Jhumkas</button>
+          </div>
+
+          <!-- Sort Selector -->
+          <div class="sort-wrapper">
+            <label for="sortSelect" data-i18n="sort_by">Sort by:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="featured" data-i18n="sort_featured">Featured & Popular</option>
+              <option value="price-low" data-i18n="sort_price_low">Price: Low to High</option>
+              <option value="price-high" data-i18n="sort_price_high">Price: High to Low</option>
+              <option value="name" data-i18n="sort_name">Name (A - Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active Filter Count Display -->
+        <div class="products-count-bar">
+          <span id="productsCountText">Showing all products</span>
+          <span class="direct-wa-notice" data-i18n="wa_notice">💡 Instant ordering on WhatsApp with live confirmation</span>
+        </div>
+
+        <!-- Products Catalog Grid -->
+        <div class="products-grid" id="allProductsGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="noProductsFound" class="empty-state" style="display: none;">
+          <div class="empty-icon">💎</div>
+          <h3 data-i18n="no_products_title">No matching jewellery pieces found</h3>
+          <p data-i18n="no_products_desc">Try searching for a different term or clear your category filter.</p>
+          <button class="btn btn-secondary" onclick="resetFilters()">
+            <span data-i18n="reset_filters">Reset Filters</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ABOUT US VIEW -->
+    <section id="page-about" class="page-view">
+      <div class="page-banner">
+        <div class="container text-center">
+          <div class="section-tag gold-text" data-i18n="about_tag">HERITAGE & ARTISTRY</div>
+          <h1 class="page-title" data-i18n="about_title">The Yova Collections Story</h1>
+          <div class="gold-divider"><span>✦</span></div>
+          <p class="page-subtitle" data-i18n="about_sub">Dedicated to preserving the eternal grandeur of South Indian jewellery through authentic rolled gold craftsmanship.</p>
+        </div>
+      </div>
+
+      <div class="container section-padding">
+        <!-- Story Two Columns -->
+        <div class="about-grid">
+          <div class="about-text-col">
+            <h2 class="about-heading" data-i18n="about_sec1_h">Royal Splendor Without Compromise</h2>
+            <p data-i18n="about_sec1_p1">
+              Welcome to <strong>Yova Collections</strong>. We were founded with a singular passion: to make royal, heritage-style Indian jewellery accessible, durable, and indistinguishable from solid 22k gold heirloom pieces.
+            </p>
+            <p data-i18n="about_sec1_p2">
+              For generations, traditional South Indian celebrations have called for ornate temple jewelry, grand Lakshmi harams, delicate gutpusalu pearl necklaces, and handcrafted peacock bangles. Real gold often carries astronomical expense and safety concerns during travels. Our specialized <strong>rolled gold jewellery</strong> and <strong>handmade rolled gold jewellery</strong> offer the perfect answer—magnificent, heavy, skin-friendly, and breathtakingly royal.
+            </p>
+            <div class="about-quote-box">
+              <p data-i18n="about_quote">"Our mission is to celebrate every woman's grace with jewellery that looks and feels like timeless gold."</p>
+              <div class="quote-sign">— Team Yova Collections</div>
+            </div>
+          </div>
+          <div class="about-img-col">
+            <div class="about-img-card">
+              <img src="images/choker_necklace.jpg" alt="Handmade Emerald Rolled Gold Choker" class="about-hero-img">
+              <div class="about-experience-badge">
+                <span class="exp-num">100%</span>
+                <span class="exp-lbl" data-i18n="about_pure_craft">Handmade & Hand-Set Stones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What is Rolled Gold Infographic Section -->
+        <div class="what-is-rolled-gold-box">
+          <div class="text-center">
+            <div class="section-tag gold-text" data-i18n="know_the_craft">KNOW THE CRAFT</div>
+            <h2 class="section-title text-white" data-i18n="what_is_title">What is Rolled Gold Jewellery?</h2>
+            <div class="gold-divider"><span>✦</span></div>
+            <p class="section-subtitle text-cream" data-i18n="what_is_sub">Understanding the technology and difference between normal imitation and genuine rolled gold.</p>
+          </div>
+
+          <div class="comparison-grid">
+            <div class="comp-card gold-border">
+              <div class="comp-badge gold" data-i18n="comp_rolled_gold">Yova Rolled Gold</div>
+              <ul class="comp-list">
+                <li><span class="chk">✓</span> <strong data-i18n="c1_h">Real Gold Layer:</strong> Substantial micron layer of genuine gold mechanically bonded.</li>
+                <li><span class="chk">✓</span> <strong data-i18n="c2_h">Long-Lasting Radiance:</strong> Does not easily tarnish or fade under proper care.</li>
+                <li><span class="chk">✓</span> <strong data-i18n="c3_h">Authentic Weight & Feel:</strong> Heavier, solid brass base creates the true feel of gold.</li>
+                <li><span class="chk">✓</span> <strong data-i18n="c4_h">Hypoallergenic:</strong> Safe for sensitive skin, nickel and lead free.</li>
+              </ul>
+            </div>
+            <div class="comp-card dim-card">
+              <div class="comp-badge gray" data-i18n="comp_imitation">Ordinary Imitation / One-Gram</div>
+              <ul class="comp-list dim">
+                <li><span class="cross">✕</span> Microscopic flash plating that wears off after 2-3 uses.</li>
+                <li><span class="cross">✕</span> Quickly turns dark or greenish with sweat and air exposure.</li>
+                <li><span class="cross">✕</span> Very light, plastic feel and unnatural reddish tone.</li>
+                <li><span class="cross">✕</span> Often causes itching or skin allergic reactions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jewellery Care Guide Accordion -->
+        <div class="care-guide-section">
+          <div class="section-header text-center">
+            <div class="section-tag" data-i18n="care_tag">MAINTENANCE GUIDE</div>
+            <h2 class="section-title" data-i18n="care_title">How to Care for Your Rolled Gold Pieces</h2>
+            <div class="gold-divider"><span>✦</span></div>
+          </div>
+
+          <div class="care-cards-grid">
+            <div class="care-card">
+              <div class="care-icon">💧</div>
+              <h3 data-i18n="care_1_h">Keep Away from Moisture</h3>
+              <p data-i18n="care_1_p">Remove before bathing, swimming, or rigorous workouts to keep the gold luster pristine.</p>
+            </div>
+            <div class="care-card">
+              <div class="care-icon">🌸</div>
+              <h3 data-i18n="care_2_h">Wear After Perfumes</h3>
+              <p data-i18n="care_2_p">Always apply hairspray, body lotions, and perfumes before putting on your jewellery.</p>
+            </div>
+            <div class="care-card">
+              <div class="care-icon">📦</div>
+              <h3 data-i18n="care_3_h">Store in Air-Tight Pouches</h3>
+              <p data-i18n="care_3_p">Store each piece separately in zip-lock bags or soft velvet boxes to prevent friction scratches.</p>
+            </div>
+            <div class="care-card">
+              <div class="care-icon">✨</div>
+              <h3 data-i18n="care_4_h">Gentle Cleaning</h3>
+              <p data-i18n="care_4_p">Wipe gently after wear with a soft dry cotton cloth before storing away.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GALLERY VIEW -->
+    <section id="page-gallery" class="page-view">
+      <div class="page-banner">
+        <div class="container text-center">
+          <div class="section-tag gold-text" data-i18n="gallery_tag">VISUAL SHOWCASE</div>
+          <h1 class="page-title" data-i18n="gallery_title">Jewellery Gallery</h1>
+          <div class="gold-divider"><span>✦</span></div>
+          <p class="page-subtitle" data-i18n="gallery_sub">Click any jewellery photograph to inspect high-definition details, craftsmanship, and order directly on WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="container section-padding">
+        <!-- Gallery Filter Buttons -->
+        <div class="gallery-filters text-center">
+          <button class="g-filter-btn active" data-gcat="all" data-i18n="filter_all">All Gallery</button>
+          <button class="g-filter-btn" data-gcat="necklaces" data-i18n="cat_necklaces">Necklaces & Harams</button>
+          <button class="g-filter-btn" data-gcat="bangles" data-i18n="cat_bangles">Kadas & Bangles</button>
+          <button class="g-filter-btn" data-gcat="earrings" data-i18n="cat_earrings">Antique Jhumkas</button>
+        </div>
+
+        <!-- Interactive Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT US VIEW -->
+    <section id="page-contact" class="page-view">
+      <div class="page-banner">
+        <div class="container text-center">
+          <div class="section-tag gold-text" data-i18n="contact_tag">GET IN TOUCH</div>
+          <h1 class="page-title" data-i18n="contact_title">Contact Yova Collections</h1>
+          <div class="gold-divider"><span>✦</span></div>
+          <p class="page-subtitle" data-i18n="contact_sub">We are always delighted to help you choose the ideal jewellery for your special occasions.</p>
+        </div>
+      </div>
+
+      <div class="container section-padding">
+        <div class="contact-layout">
+          <!-- Left: Direct Channels Card -->
+          <div class="contact-info-panel">
+            <h2 class="panel-heading" data-i18n="direct_ordering">Direct WhatsApp Ordering</h2>
+            <p data-i18n="direct_order_desc">
+              For immediate orders, live video previews, and customized enquiries, connect with us directly on WhatsApp or telephone.
+            </p>
+
+            <div class="contact-methods-list">
+              <!-- WhatsApp Card -->
+              <a href="https://wa.me/919701959456?text=Hi%20Yova%20Collections%2C%20I%20would%20like%20to%20order%20jewellery." target="_blank" rel="noopener" class="contact-method-card wa-highlight">
+                <div class="method-icon wa-bg">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+                </div>
+                <div class="method-info">
+                  <div class="method-title" data-i18n="whatsapp_orders">WhatsApp Order Line</div>
+                  <div class="method-val">+91 9701959456</div>
+                  <div class="method-sub" data-i18n="quick_response">Tap to chat instantly</div>
+                </div>
+              </a>
+
+              <!-- Call Card -->
+              <a href="tel:+919701959456" class="contact-method-card">
+                <div class="method-icon phone-bg">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="method-info">
+                  <div class="method-title" data-i18n="phone_support">Phone Support</div>
+                  <div class="method-val">9701959456</div>
+                  <div class="method-sub" data-i18n="hours_sub">Mon - Sun: 9:00 AM - 9:00 PM</div>
+                </div>
+              </a>
+
+              <!-- Instagram Card -->
+              <a href="https://instagram.com/yovacollections" target="_blank" rel="noopener" class="contact-method-card insta-highlight">
+                <div class="method-icon insta-bg">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <div class="method-info">
+                  <div class="method-title">Instagram</div>
+                  <div class="method-val">Yova Collections</div>
+                  <div class="method-sub" data-i18n="insta_follow">Follow for daily reels & stories</div>
+                </div>
+              </a>
+
+              <!-- Shipping Info -->
+              <div class="contact-method-card">
+                <div class="method-icon ship-bg">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <div class="method-info">
+                  <div class="method-title" data-i18n="shipping_pan_india">Shipping Coverage</div>
+                  <div class="method-val" data-i18n="pan_india_val">All Over India</div>
+                  <div class="method-sub" data-i18n="shipping_sub">Secure tamper-proof insured courier</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Inquiry Form with Direct WhatsApp Dispatch -->
+          <div class="contact-form-panel">
+            <div class="form-header">
+              <h3 data-i18n="send_inquiry">Send Custom Order Inquiry</h3>
+              <p data-i18n="form_desc">Fill out your details to send a structured inquiry directly to our WhatsApp support team.</p>
+            </div>
+
+            <form id="inquiryForm" onsubmit="handleInquirySubmit(event)">
+              <div class="form-group">
+                <label for="custName" data-i18n="your_name">Your Name *</label>
+                <input type="text" id="custName" required placeholder="e.g. Sowmya" class="form-input">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="custPhone" data-i18n="phone_number">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="custPhone" required placeholder="e.g. 9876543210" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="custCity" data-i18n="city_state">City & State *</label>
+                  <input type="text" id="custCity" required placeholder="e.g. Hyderabad, Telangana" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="jewelleryInterest" data-i18n="interest_label">Interested Jewellery Category</label>
+                <select id="jewelleryInterest" class="form-input form-select">
+                  <option value="Handmade Rolled Gold" data-i18n="opt_handmade">Handmade Rolled Gold</option>
+                  <option value="Rolled Gold Necklaces & Harams" data-i18n="opt_necklaces">Rolled Gold Necklaces & Harams</option>
+                  <option value="Antique Rolled Gold Bangles" data-i18n="opt_bangles">Antique Rolled Gold Bangles</option>
+                  <option value="Handcrafted Jhumkas" data-i18n="opt_jhumkas">Handcrafted Jhumkas & Earrings</option>
+                  <option value="Bridal Jewellery Set" data-i18n="opt_bridal">Complete Bridal Jewellery Set</option>
+                  <option value="Custom Design / Other" data-i18n="opt_custom">Custom Design / Other Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="custMessage" data-i18n="your_message">Your Requirement or Message</label>
+                <textarea id="custMessage" rows="4" placeholder="Tell us about the occasion, design preferences, or budget..." class="form-input form-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-wa-submit">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+                <span data-i18n="send_via_wa">Send Inquiry on WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-container">
+          <div class="section-header text-center">
+            <div class="section-tag" data-i18n="faq_tag">COMMON QUESTIONS</div>
+            <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+            <div class="gold-divider"><span>✦</span></div>
+          </div>
+
+          <div class="accordion-list">
+            <details class="faq-item">
+              <summary class="faq-summary">
+                <span data-i18n="faq_q1">How do I order on WhatsApp?</span>
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p data-i18n="faq_a1">Simply click on the "Order on WhatsApp" button underneath any jewellery design or banner. A WhatsApp chat with our official number 9701959456 will open with the exact product details and price ready to send. We will confirm availability, provide live photos/video preview if requested, and provide payment details.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-summary">
+                <span data-i18n="faq_q2">What is the lifespan of Yova Collections rolled gold jewellery?</span>
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p data-i18n="faq_a2">With normal occasional wear (weddings, pujas, parties) and proper care (storing dry in air-tight pouches away from water and perfume), our rolled gold maintains its golden brilliance for years without discoloration.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-summary">
+                <span data-i18n="faq_q3">Can I request a live video call to inspect the jewelry?</span>
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p data-i18n="faq_a3">Yes! We understand that jewellery requires close visual inspection. Simply send us a message on WhatsApp (9701959456), and our team will gladly arrange a live video preview of the designs you love.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-summary">
+                <span data-i18n="faq_q4">What payment and delivery methods do you support?</span>
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p data-i18n="faq_a4">We accept UPI (Google Pay, PhonePe, Paytm), Bank IMPS/NEFT, and Cash on Delivery (selected locations). We ship pan-India via trusted express courier services with tracking provided.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CHECKOUT PAGE VIEW -->
+    <section id="page-checkout" class="page-view">
+      <div class="page-banner">
+        <div class="container text-center">
+          <div class="section-tag gold-text" data-i18n="checkout_tag">SECURE CHECKOUT</div>
+          <h1 class="page-title" data-i18n="checkout_title">Complete Your Order</h1>
+          <div class="gold-divider"><span>✦</span></div>
+          <p class="page-subtitle" data-i18n="checkout_sub">Fill in your delivery address and choose a payment method to confirm your order.</p>
+        </div>
+      </div>
+
+      <div class="container section-padding">
+        <div class="checkout-layout">
+          <!-- Left: Customer & Delivery Details Form -->
+          <div class="checkout-form-box">
+            <h3 class="checkout-section-heading" data-i18n="checkout_sec1">1. Shipping & Contact Information</h3>
+            <form id="checkoutForm" onsubmit="handleOrderSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="chkFullName" data-i18n="lbl_fullname">Full Name *</label>
+                  <input type="text" id="chkFullName" required placeholder="e.g. Sowmya Reddy" data-i18n-placeholder="ph_fullname" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="chkPhone" data-i18n="lbl_phone">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="chkPhone" required placeholder="e.g. 9876543210" data-i18n-placeholder="ph_phone" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="chkEmail" data-i18n="lbl_email">Email Address (Optional)</label>
+                <input type="email" id="chkEmail" placeholder="sowmya@example.com" data-i18n-placeholder="ph_email" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="chkAddress" data-i18n="lbl_street">Flat / House No. / Street Address *</label>
+                <textarea id="chkAddress" required rows="2" placeholder="House No, Street name, Landmark" data-i18n-placeholder="ph_address" class="form-input"></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="chkCity" data-i18n="lbl_city">City *</label>
+                  <input type="text" id="chkCity" required placeholder="e.g. Hyderabad" data-i18n-placeholder="ph_city" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="chkState" data-i18n="lbl_state">State *</label>
+                  <input type="text" id="chkState" required placeholder="e.g. Telangana" data-i18n-placeholder="ph_state" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="chkPincode" data-i18n="lbl_pincode">Pincode *</label>
+                  <input type="text" id="chkPincode" required placeholder="e.g. 500001" data-i18n-placeholder="ph_pincode" maxlength="6" class="form-input">
+                </div>
+              </div>
+
+              <h3 class="checkout-section-heading mt-4" data-i18n="checkout_sec2">2. Select Payment Option</h3>
+              <div class="payment-options-grid">
+                <label class="payment-option-card active">
+                  <input type="radio" name="paymentMethod" value="upi" checked onchange="updatePaymentSelection(this)">
+                  <div class="payment-option-content">
+                    <div class="payment-title">
+                      <span class="pay-icon">📱</span>
+                      <span data-i18n="pay_upi_title">UPI / QR Code</span>
+                      <span class="pay-badge" data-i18n="pay_upi_badge">Instant & Fast</span>
+                    </div>
+                    <p class="payment-desc" data-i18n="pay_upi_desc">Google Pay, PhonePe, Paytm, BHIM</p>
+                  </div>
+                </label>
+
+                <label class="payment-option-card">
+                  <input type="radio" name="paymentMethod" value="card" onchange="updatePaymentSelection(this)">
+                  <div class="payment-option-content">
+                    <div class="payment-title">
+                      <span class="pay-icon">💳</span>
+                      <span data-i18n="pay_card_title">Credit / Debit Card</span>
+                    </div>
+                    <p class="payment-desc" data-i18n="pay_card_desc">Visa, MasterCard, RuPay & NetBanking</p>
+                  </div>
+                </label>
+
+                <label class="payment-option-card">
+                  <input type="radio" name="paymentMethod" value="cod" onchange="updatePaymentSelection(this)">
+                  <div class="payment-option-content">
+                    <div class="payment-title">
+                      <span class="pay-icon">💵</span>
+                      <span data-i18n="pay_cod_title">Cash on Delivery (COD)</span>
+                    </div>
+                    <p class="payment-desc" data-i18n="pay_cod_desc">Pay cash when courier delivers to your doorstep</p>
+                  </div>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-buy-now btn-place-order">
+                <span data-i18n="place_order_now">Place Order Now</span>
+                <svg class="icon arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Order Summary Sidebar -->
+          <div class="checkout-summary-box">
+            <h3 class="summary-title" data-i18n="order_summary">Order Summary</h3>
+            <div id="checkoutSummaryItems" class="checkout-items-list">
+              <!-- Dynamically rendered -->
+            </div>
+            <div id="checkoutSummaryTotals" class="checkout-totals-box">
+              <!-- Dynamically rendered -->
+            </div>
+            <div class="checkout-trust-box">
+              <div class="trust-item" data-i18n="trust_ssl">🔒 256-Bit SSL Encrypted & Secure</div>
+              <div class="trust-item" data-i18n="trust_auth">✨ 100% Authentic Rolled Gold Guarantee</div>
+              <div class="trust-item" data-i18n="trust_express">🚚 Express Pan-India Doorstep Delivery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ORDER CONFIRMATION PAGE VIEW -->
+    <section id="page-order-success" class="page-view">
+      <div class="container section-padding text-center">
+        <div class="order-success-card">
+          <div class="success-icon-badge">✓</div>
+          <div class="section-tag gold-text" data-i18n="order_confirmed_tag">ORDER CONFIRMED</div>
+          <h1 class="success-title" data-i18n="thank_you_order">Thank You For Your Order!</h1>
+          <p class="success-subtitle" data-i18n="order_success_sub">Your order has been placed successfully and is now being prepared by our master artisans.</p>
+
+          <div class="order-details-summary-box" id="orderSuccessDetails">
+            <!-- Dynamically populated by JS after form submission -->
+          </div>
+
+          <div class="success-actions-row">
+            <a id="orderConfirmedWaBtn" href="https://wa.me/919701959456" target="_blank" rel="noopener" class="btn btn-order-confirmed-wa">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+              <span data-i18n="order_confirmed_wa_btn">Order Confirmed (Send Details on WhatsApp)</span>
+            </a>
+            <button class="btn btn-primary" onclick="switchPage('products')" data-i18n="continue_shopping">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Col 1: Brand & Philosophy -->
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-symbol">✦</div>
+          <div class="logo-text-group">
+            <span class="brand-name">YOVA</span>
+            <span class="brand-sub">COLLECTIONS</span>
+          </div>
+        </div>
+        <p class="footer-about-text" data-i18n="footer_desc">
+          Premier South Indian destination for authentic rolled gold and artisanal handmade rolled gold jewellery. Timeless royal elegance crafted for modern celebrations.
+        </p>
+        <div class="footer-social-links">
+          <a href="https://instagram.com/yovacollections" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/919701959456" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="quick_links">Explore Pages</h4>
+        <ul class="footer-links">
+          <li><a href="#home" onclick="switchPage('home')" data-i18n="nav_home">Home</a></li>
+          <li><a href="#products" onclick="switchPage('products')" data-i18n="nav_products">Products Catalogue</a></li>
+          <li><a href="#about" onclick="switchPage('about')" data-i18n="nav_about">About Us & Craft</a></li>
+          <li><a href="#gallery" onclick="switchPage('gallery')" data-i18n="nav_gallery">Visual Gallery</a></li>
+          <li><a href="#contact" onclick="switchPage('contact')" data-i18n="nav_contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Categories -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="jewellery_categories">Jewellery Categories</h4>
+        <ul class="footer-links">
+          <li><a href="#products" onclick="switchPage('products'); filterByCategory('handmade');" data-i18n="cat_handmade_rg">Handmade Rolled Gold</a></li>
+          <li><a href="#products" onclick="switchPage('products'); filterByCategory('necklaces');" data-i18n="cat_temple_neck">Temple Harams & Chokers</a></li>
+          <li><a href="#products" onclick="switchPage('products'); filterByCategory('bangles');" data-i18n="cat_antique_kadas">Antique Peacock Kadas</a></li>
+          <li><a href="#products" onclick="switchPage('products'); filterByCategory('earrings');" data-i18n="cat_kemp_jhumkas">Kemp Jhumkas & Earrings</a></li>
+          <li><a href="#products" onclick="switchPage('products'); filterByCategory('rolled-gold');" data-i18n="cat_bridal_rg">Bridal Gutpusalu Sets</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Official Order Details -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="order_desk">Direct Order Desk</h4>
+        <div class="footer-contact-items">
+          <div class="f-contact-item">
+            <span class="f-icon">📱</span>
+            <div>
+              <div class="f-lbl" data-i18n="whatsapp_order_no">WhatsApp Order Number:</div>
+              <a href="https://wa.me/919701959456" target="_blank" rel="noopener" class="f-val-link"><strong>9701959456</strong></a>
+            </div>
+          </div>
+          <div class="f-contact-item">
+            <span class="f-icon">📸</span>
+            <div>
+              <div class="f-lbl">Instagram:</div>
+              <a href="https://instagram.com/yovacollections" target="_blank" rel="noopener" class="f-val-link"><strong>Yova Collections</strong></a>
+            </div>
+          </div>
+          <div class="f-contact-item">
+            <span class="f-icon">🚚</span>
+            <div>
+              <div class="f-lbl" data-i18n="dispatch_coverage">Delivery Coverage:</div>
+              <span class="f-val-text" data-i18n="pan_india_text">Pan-India Courier with Tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Sub-Footer -->
+    <div class="sub-footer">
+      <div class="container sub-footer-inner">
+        <div class="copyright-text">
+          © 2026 <strong>Yova Collections</strong>. All Rights Reserved. Rolled Gold & Handmade Jewellery.
+        </div>
+        <div class="sub-footer-badge" data-i18n="crafted_with_love">
+          Crafted with <span>♥</span> for timeless Indian royalty
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MOBILE BOTTOM NAVIGATION BAR ==================== -->
+  <div class="mobile-bottom-bar" id="mobileBottomBar">
+    <a href="#home" class="m-bar-btn active" data-page="home" onclick="switchPage('home')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-i18n="nav_home">Home</span>
+    </a>
+    <a href="#products" class="m-bar-btn" data-page="products" onclick="switchPage('products')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span data-i18n="nav_products">Shop</span>
+    </a>
+    <a href="https://wa.me/919701959456?text=Hi%20Yova%20Collections%2C%20I%20want%20to%20order%20jewellery." target="_blank" rel="noopener" class="m-bar-btn m-bar-wa">
+      <div class="wa-fab-circle">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+      </div>
+      <span class="m-wa-lbl">WhatsApp</span>
+    </a>
+    <a href="#gallery" class="m-bar-btn" data-page="gallery" onclick="switchPage('gallery')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span data-i18n="nav_gallery">Gallery</span>
+    </a>
+    <a href="#contact" class="m-bar-btn" data-page="contact" onclick="switchPage('contact')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span data-i18n="nav_contact">Contact</span>
+    </a>
+  </div>
+
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. Product Quick View Modal -->
+  <div class="modal-overlay" id="quickViewModal" aria-hidden="true">
+    <div class="modal-dialog product-modal-dialog">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close modal">✕</button>
+      <div class="modal-body product-modal-body" id="quickViewBody">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Interactive Gallery Lightbox Modal -->
+  <div class="modal-overlay" id="galleryLightboxModal" aria-hidden="true">
+    <div class="modal-dialog lightbox-dialog">
+      <button class="modal-close-btn lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">✕</button>
+      <div class="lightbox-content">
+        <img id="lightboxImg" src="" alt="Jewellery zoom view" class="lightbox-img">
+        <div class="lightbox-caption">
+          <div class="lightbox-title-box">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxPrice" class="lightbox-price"></p>
+          </div>
+          <a id="lightboxWaBtn" href="#" target="_blank" rel="noopener" class="btn btn-wa-full">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+            <span data-i18n="order_this_piece_wa">Order this Piece on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Shopping Cart Drawer & Overlay -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartDrawer()" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <h3 data-i18n="shopping_cart">Shopping Cart</h3>
+        <span class="cart-count-pill" id="cartDrawerCount">0 items</span>
+      </div>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cartDrawerItems">
+      <!-- Dynamically filled by JS -->
+    </div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Dynamically filled by JS -->
+    </div>
+  </aside>
+
+  <!-- 4. Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
