@@ -74,6 +74,318 @@
     .motif-tl { top: -3.5rem; left: -3.5rem; }
     .motif-br { bottom: -3.5rem; right: -3.5rem; }
 
+    /* ==========================================================================
+       FULL-SCREEN CINEMATIC JEWELLERY BACKGROUND (CAMPAIGN AD AMBIENCE)
+       ========================================================================== */
+    .luxury-jewellery-backdrop {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none !important;
+      user-select: none;
+      z-index: 1;
+      overflow: hidden;
+      background-color: #FAF5EC;
+    }
+
+    /* Layer 1: Base high-resolution luxury ivory silk backdrop */
+    .backdrop-base-wallpaper {
+      position: absolute;
+      inset: -5%;
+      width: 110%;
+      height: 110%;
+      background-image: url('images/ivory_silk_backdrop.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: brightness(1.02) contrast(1.02) saturate(1.05);
+      transform: scale(1.02);
+      animation: luxuryCameraPan 32s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    /* Soft Studio Warm Champagne & Ivory Ambient Grading Film */
+    .backdrop-colour-film {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.45) 0%, rgba(254, 250, 242, 0.35) 50%, rgba(245, 235, 215, 0.40) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, transparent 50%, rgba(237, 214, 138, 0.15) 100%);
+      mix-blend-mode: normal;
+      pointer-events: none;
+    }
+
+    /* Soft Warm Champagne Center Glow Halo (Elevating White Card) */
+    .backdrop-center-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(480px, 60vw, 760px);
+      height: clamp(580px, 75vh, 880px);
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(237, 214, 138, 0.38) 0%, rgba(198, 154, 54, 0.16) 40%, rgba(255, 255, 255, 0.05) 70%, transparent 100%);
+      filter: blur(60px);
+      -webkit-filter: blur(60px);
+      animation: haloBreathe 16s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    /* Layer 2: Editorial Flank Visuals (Real Jewellery on Ivory Silk) */
+    .editorial-flank {
+      position: absolute;
+      top: 50%;
+      height: 92vh;
+      max-height: 940px;
+      pointer-events: none;
+      filter: brightness(0.98) contrast(1.05) drop-shadow(0 15px 35px rgba(185, 150, 105, 0.22));
+      transition: opacity 0.5s ease;
+      will-change: transform;
+    }
+
+    .editorial-flank-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    /* Left: Antique-Gold Temple Necklace on Ivory Silk (Bleeding off left edge) */
+    .flank-left {
+      left: -2vw;
+      width: clamp(340px, 31vw, 540px);
+      transform: translateY(-50%);
+      -webkit-mask-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 45%, rgba(0, 0, 0, 0.35) 75%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+      -webkit-mask-composite: destination-in;
+      mask-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 45%, rgba(0, 0, 0, 0.35) 75%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+      mask-composite: intersect;
+      opacity: 0.90;
+      animation: leftFlankDrift 26s ease-in-out infinite alternate;
+    }
+
+    /* Right: Matching Antique-Gold Jhumkas on Ivory Silk (Bleeding off right edge) */
+    .flank-right {
+      right: -2vw;
+      width: clamp(320px, 29vw, 500px);
+      transform: translateY(-50%);
+      -webkit-mask-image: 
+        linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 45%, rgba(0, 0, 0, 0.35) 75%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+      -webkit-mask-composite: destination-in;
+      mask-image: 
+        linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 45%, rgba(0, 0, 0, 0.35) 75%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent 100%);
+      mask-composite: intersect;
+      opacity: 0.90;
+      animation: rightFlankDrift 28s ease-in-out infinite alternate;
+    }
+
+    /* Layer 3: Slow Elegant Light Sweep across the gold jewellery */
+    .gold-sheen-sweep {
+      position: absolute;
+      inset: -50% -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 44%,
+        rgba(255, 255, 255, 0.15) 48%,
+        rgba(255, 250, 235, 0.45) 50%,
+        rgba(237, 214, 138, 0.20) 52%,
+        transparent 56%,
+        transparent 100%
+      );
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      animation: lightSweepLoop 11s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Layer 4: Refined Precision Gold Glints on Jewellery Details */
+    .jewellery-glint {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    .jewellery-glint::before,
+    .jewellery-glint::after {
+      content: '';
+      position: absolute;
+      background: #FFFFFF;
+      box-shadow: 0 0 12px 2px rgba(237, 214, 138, 0.95);
+      border-radius: 999px;
+    }
+
+    .jewellery-glint::before {
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    .jewellery-glint::after {
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+    }
+
+    .glint-left-pendant {
+      left: 14vw;
+      top: 48vh;
+      animation: precisionGlint 8.5s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+
+    .glint-right-jhumka {
+      right: 13vw;
+      top: 42vh;
+      animation: precisionGlint 9.5s ease-in-out infinite;
+      animation-delay: 5s;
+    }
+
+    .glint-top-accent {
+      left: 50%;
+      top: 14vh;
+      animation: precisionGlint 10.5s ease-in-out infinite;
+      animation-delay: 8s;
+    }
+
+    /* Animations */
+    @keyframes luxuryCameraPan {
+      0% {
+        transform: scale(1.02) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.07) translate(-1.2%, -1%);
+      }
+      100% {
+        transform: scale(1.04) translate(1.4%, 1.2%);
+      }
+    }
+
+    @keyframes haloBreathe {
+      0% {
+        transform: translate(-50%, -50%) scale(0.94);
+        opacity: 0.65;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0.98);
+        opacity: 0.72;
+      }
+    }
+
+    @keyframes leftFlankDrift {
+      0% {
+        transform: translateY(-50%) scale(1) translate(0, 0);
+      }
+      50% {
+        transform: translateY(-50%) scale(1.03) translate(10px, -12px);
+      }
+      100% {
+        transform: translateY(-50%) scale(0.99) translate(-8px, 10px);
+      }
+    }
+
+    @keyframes rightFlankDrift {
+      0% {
+        transform: translateY(-50%) scale(1) translate(0, 0);
+      }
+      50% {
+        transform: translateY(-50%) scale(1.03) translate(-12px, -10px);
+      }
+      100% {
+        transform: translateY(-50%) scale(0.99) translate(8px, 12px);
+      }
+    }
+
+    @keyframes lightSweepLoop {
+      0%, 15% {
+        transform: translate(-80%, -80%) rotate(0deg);
+        opacity: 0;
+      }
+      28% {
+        opacity: 0.6;
+      }
+      45%, 100% {
+        transform: translate(65%, 65%) rotate(0deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes precisionGlint {
+      0%, 75%, 100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+      }
+      82% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
+      }
+      90% {
+        opacity: 0.15;
+        transform: translate(-50%, -50%) scale(0.5) rotate(90deg);
+      }
+    }
+
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .backdrop-base-wallpaper,
+      .backdrop-center-halo,
+      .flank-left,
+      .flank-right,
+      .gold-sheen-sweep,
+      .jewellery-glint {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .flank-left {
+        left: -8vw;
+        opacity: 0.45;
+        width: 38vw;
+      }
+      .flank-right {
+        right: -8vw;
+        opacity: 0.42;
+        width: 36vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .flank-left {
+        left: -14vw;
+        opacity: 0.28;
+        width: 48vw;
+      }
+      .flank-right {
+        right: -14vw;
+        opacity: 0.25;
+        width: 46vw;
+      }
+      .backdrop-center-halo {
+        width: 90vw;
+        height: 70vh;
+      }
+    }
+
     /* Welcome Card Container */
     .welcome-container {
       width: 100%;
@@ -344,6 +656,40 @@
 </head>
 
 <body class="welcome-body">
+
+  <!-- ==========================================================================
+       FULL-SCREEN CINEMATIC JEWELLERY BACKGROUND (EDITORIAL CAMPAIGN)
+       Strictly pointer-events: none behind all interactive content
+       ========================================================================== -->
+  <div class="luxury-jewellery-backdrop" aria-hidden="true">
+    <!-- Layer 1: High-resolution ivory silk backdrop with slow camera-pan -->
+    <div class="backdrop-base-wallpaper"></div>
+
+    <!-- Layer 1b: Soft Warm Champagne & Studio Ambient Grading Film -->
+    <div class="backdrop-colour-film"></div>
+
+    <!-- Layer 2: Soft Warm Gold Center Halo behind Welcome Card -->
+    <div class="backdrop-center-halo"></div>
+
+    <!-- Layer 3: Editorial Flanks with South Indian antique jewellery on ivory silk -->
+    <!-- Left Flank: Antique Temple Haram / Necklace on Ivory Silk -->
+    <div class="editorial-flank flank-left">
+      <img src="images/temple_necklace_ivory.jpg" alt="" class="editorial-flank-img" loading="eager">
+    </div>
+
+    <!-- Right Flank: Matching Antique Jhumkas on Ivory Silk -->
+    <div class="editorial-flank flank-right">
+      <img src="images/antique_jhumkas_ivory.jpg" alt="" class="editorial-flank-img" loading="eager">
+    </div>
+
+    <!-- Layer 4: Cinematic Light Sweep Across the Gold Jewellery -->
+    <div class="gold-sheen-sweep"></div>
+
+    <!-- Layer 5: Refined Precision Gold Glints -->
+    <div class="jewellery-glint glint-left-pendant"></div>
+    <div class="jewellery-glint glint-right-jhumka"></div>
+    <div class="jewellery-glint glint-top-accent"></div>
+  </div>
 
   <!-- Subtle Background Watermarks -->
   <div class="bg-motif motif-tl" aria-hidden="true">✦</div>

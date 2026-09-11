@@ -860,9 +860,9 @@ input, select, textarea {
   position: relative;
   border-radius: var(--radius-lg);
   padding: 10px;
-  background: linear-gradient(135deg, #3B0918 0%, #5A1623 50%, #3B0918 100%);
+  background: linear-gradient(135deg, #2A170F 0%, #47281B 50%, #2A170F 100%);
   border: 1px solid rgba(212, 175, 55, 0.6);
-  box-shadow: 0 25px 60px rgba(59, 9, 24, 0.3), inset 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 0 25px 60px rgba(42, 23, 15, 0.32), inset 0 0 20px rgba(0,0,0,0.4);
 }
 
 .hero-gold-glow {
