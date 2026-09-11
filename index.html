@@ -203,6 +203,10 @@
       gap: 0.65rem;
       transition: all 0.3s ease;
       box-shadow: 0 2px 8px rgba(90, 22, 35, 0.02);
+      width: 100%;
+      cursor: pointer;
+      font-family: inherit;
+      outline: none;
     }
 
     .tagline-item:hover {
@@ -210,6 +214,17 @@
       border-color: var(--welcome-gold-primary);
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(198, 154, 54, 0.12);
+    }
+
+    .tagline-item:active {
+      transform: scale(0.98);
+      background: #FFFDF8;
+      box-shadow: 0 2px 6px rgba(198, 154, 54, 0.18);
+    }
+
+    .tagline-item:focus-visible {
+      outline: 2px solid var(--welcome-gold-primary);
+      outline-offset: 2px;
     }
 
     .tagline-sparkle {
@@ -354,22 +369,22 @@
         </div>
       </header>
 
-      <!-- The 3 Brand Taglines -->
+      <!-- The 3 Brand Taglines (Clickable Tabs) -->
       <section class="taglines-container" aria-label="Brand Taglines">
-        <div class="tagline-item">
+        <button type="button" class="tagline-item" aria-label="Timeless Gold. Crafted for You.">
           <span class="tagline-sparkle" aria-hidden="true">✦</span>
           <span class="tagline-text">“Timeless Gold. Crafted for You.”</span>
-        </div>
+        </button>
 
-        <div class="tagline-item">
+        <button type="button" class="tagline-item" aria-label="Where Every Moment Shines.">
           <span class="tagline-sparkle" aria-hidden="true">✦</span>
           <span class="tagline-text">“Where Every Moment Shines.”</span>
-        </div>
+        </button>
 
-        <div class="tagline-item">
+        <button type="button" class="tagline-item" aria-label="Luxury for Every Celebration.">
           <span class="tagline-sparkle" aria-hidden="true">✦</span>
           <span class="tagline-text">“Luxury for Every Celebration.”</span>
-        </div>
+        </button>
       </section>
 
       <!-- Enter Collection Action Button -->
@@ -391,5 +406,15 @@
     </footer>
   </main>
 
+  <script>
+    document.querySelectorAll('.tagline-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        this.style.transform = 'scale(0.97)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+  </script>
 </body>
 </html>
