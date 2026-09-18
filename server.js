@@ -21,11 +21,13 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   let reqPath = parsedUrl.pathname;
 
-  // Root URL opens Welcome page, /home opens the boutique Home page
+  // Root URL opens Welcome page, /home opens the boutique Home page, /admin opens Admin Portal
   if (reqPath === '/' || reqPath === '') {
     reqPath = '/index.html';
   } else if (reqPath === '/home') {
     reqPath = '/home.html';
+  } else if (reqPath === '/admin') {
+    reqPath = '/admin.html';
   }
 
   const filePath = path.join(__dirname, decodeURIComponent(reqPath));

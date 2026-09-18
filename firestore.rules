@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // YOVA Collections - Products Catalog Security Rules
+    // Anyone can read product catalog data
+    // Only authenticated admins can create, modify, or delete products
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

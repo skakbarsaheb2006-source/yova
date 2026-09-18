@@ -3,7 +3,7 @@
  * Business Name: Yova Collections
  * Products: Rolled gold jewellery and handmade rolled gold jewellery
  * WhatsApp Order Number: 9701959456
- * Instagram: Yova Collections
+ * Instagram: @pooj_i5 (https://www.instagram.com/pooj_i5/)
  * Languages Supported: English (default), Telugu (తెలుగు), Hindi (हिन्दी)
  */
 
@@ -23,15 +23,17 @@ const translations = {
     order_on_wa_bubble: "Order on WhatsApp",
     select_language: "Language / భాష / भाषा:",
     chat_on_wa: "Chat on WhatsApp (9701959456)",
-    hero_badge: "Premium Gold Finish",
-    hero_title_1: "Beautiful Jewellery for",
-    hero_title_2: "Every Occasion",
-    hero_desc: "Elegant rolled gold jewellery with a rich gold look, lasting shine, and comfortable everyday wear.",
-    explore_collection: "Explore Collection",
-    order_on_whatsapp: "WhatsApp Order",
-    trust_quality: "100% Guaranteed Rolled Gold",
-    trust_handmade: "Artisanal Handmade Finish",
-    trust_shipping: "Safe Doorstep Delivery",
+    hero_badge: "YOVA SIGNATURE GOLD",
+    hero_title_1: "Jewellery That Makes",
+    hero_title_2: "Every Moment Special",
+    hero_desc: "Elegant rolled-gold jewellery inspired by South Indian heritage. Made to look beautiful, feel comfortable, and shine for every celebration.",
+    explore_collection: "EXPLORE COLLECTION",
+    hero_trust_1_title: "Gold Finish That Lasts",
+    hero_trust_1_sub: "Designed for everyday beauty",
+    hero_trust_2_title: "Handcrafted With Care",
+    hero_trust_2_sub: "Heritage-inspired detailing",
+    hero_trust_3_title: "Safe Delivery Across India",
+    hero_trust_3_sub: "Secure and reliable service",
     hero_badge_featured: "Signature Bridal Collection",
     hero_badge_sub: "Handcrafted Antique Masterpiece",
     pillar_1_title: "Authentic Rolled Gold",
@@ -62,7 +64,7 @@ const translations = {
     review_2_text: "\"Ordered the handmade peacock kadas via WhatsApp. The response was super quick, they showed me close-up videos, and delivered within 3 days in safe packaging. Extremely satisfied!\"",
     review_3_text: "\"Quality of the Gutpusalu necklace is top-notch! The pearls and kemp stones have such a royal antique sheen. Very convenient to order on WhatsApp with just one click.\"",
     follow_insta: "Join Our Growing Community on Instagram",
-    insta_desc: "Follow @YovaCollections for daily updates, customer styling reels, and new design drops.",
+    insta_desc: "Follow @pooj_i5 for jewellery updates, styling inspiration, and new collection drops.",
     catalog_tag: "COMPLETE COLLECTION",
     catalog_title: "Rolled Gold & Handmade Jewellery",
     catalog_sub: "Explore our full line-up of South Indian necklaces, temple jewellery, antique kadas, and handcrafted earrings.",
@@ -196,15 +198,17 @@ const translations = {
     order_on_wa_bubble: "WhatsApp లో ఆర్డర్",
     select_language: "భాష ఎంచుకోండి:",
     chat_on_wa: "WhatsApp లో చాట్ చేయండి (9701959456)",
-    hero_badge: "మీ వెలుగు ధరించండి. ప్రతి క్షణాన్ని మీదిగా చేసుకోండి.",
-    hero_title_1: "నిరంతరం వెలిగే",
-    hero_title_2: "స్వచ్ఛమైన రోల్డ్ గోల్డ్",
-    hero_desc: "అసలైన సౌత్ ఇండియన్ రోల్డ్ గోల్డ్ మరియు చేతితో చేసిన హ్యాండ్‌మేడ్ ఆభరణాల రాజసమైన అందాన్ని అనుభవించండి. 22 క్యారెట్ల అసలైన బంగారు నగలా కనిపించేలా నైపుణ్యంతో రూపొందించబడింది.",
+    hero_badge: "యోవా సిగ్నేచర్ గోల్డ్",
+    hero_title_1: "ప్రతి క్షణాన్ని ప్రత్యేకంగా మార్చే",
+    hero_title_2: "అద్భుతమైన ఆభరణాలు",
+    hero_desc: "దక్షిణ భారత సంస్కృతితో రూపొందించిన రోల్డ్ గోల్డ్ ఆభరణాలు. ప్రతి వేడుకలో రాణించేలా తీర్చిదిద్దబడింది.",
     explore_collection: "కలెక్షన్ చూడండి",
-    order_on_whatsapp: "WhatsApp ఆర్డర్",
-    trust_quality: "100% గ్యారంటీ రోల్డ్ గోల్డ్",
-    trust_handmade: "చేతితో చేసిన సున్నితమైన పనితనం",
-    trust_shipping: "సురక్షితమైన డోర్‌స్టెప్ డెలివరీ",
+    hero_trust_1_title: "శాశ్వతమైన గోల్డ్ ఫినిష్",
+    hero_trust_1_sub: "రోజూ ధరించడానికి అనుకూలం",
+    hero_trust_2_title: "చేతితో చేసిన సున్నితత్వం",
+    hero_trust_2_sub: "సాంప్రదాయ నగిషీ కళ",
+    hero_trust_3_title: "భారతదేశమంతటా సురక్షిత డెలివరీ",
+    hero_trust_3_sub: "నమ్మకమైన కొరియర్ సేవలు",
     hero_badge_featured: "ప్రత్యేక పెళ్లిళ్ల కలెక్షన్",
     hero_badge_sub: "చేతితో చేసిన పురాతన కళాఖండం",
     pillar_1_title: "అసలైన రోల్డ్ గోల్డ్",
@@ -235,7 +239,7 @@ const translations = {
     review_2_text: "\"హ్యాండ్‌మేడ్ నెమలి కడాలు WhatsApp ద్వారా ఆర్డర్ చేశాను. వెంటనే స్పందించి క్లోజప్ వీడియోలు చూపించారు. 3 రోజుల్లోనే సురక్షితంగా వచ్చాయి.\"",
     review_3_text: "\"గుట్పూసల నెక్లెస్ క్వాలిటీ అద్భుతం! ముత్యాలు మరియు కెంపు రాళ్ల మెరుపు ఎంతో రిచ్‌గా ఉంది. ఒక క్లిక్‌తో WhatsApp లో ఆర్డర్ చేయడం చాలా సులభం.\"",
     follow_insta: "Instagram లో మాతో కలవండి",
-    insta_desc: "రోజువారీ కొత్త డిజైన్లు, రీల్స్ మరియు అప్‌డేట్స్ కోసం @YovaCollections ను ఫాలో అవ్వండి.",
+    insta_desc: "ఆభరణాల అప్‌డేట్స్, స్టైలింగ్ మరియు కొత్త కలెక్షన్ల కోసం @pooj_i5 ను ఫాలో అవ్వండి.",
     catalog_tag: "పూర్తి కలెక్షన్",
     catalog_title: "రోల్డ్ గోల్డ్ & హ్యాండ్‌మేడ్ ఆభరణాలు",
     catalog_sub: "సౌత్ ఇండియన్ హారాలు, చోకర్లు, కంకణాలు మరియు పురాతన జుంకాల పూర్తి శ్రేణిని అన్వేషించండి.",
@@ -369,15 +373,17 @@ const translations = {
     order_on_wa_bubble: "WhatsApp पर ऑर्डर",
     select_language: "भाषा चुनें:",
     chat_on_wa: "WhatsApp पर चैट करें (9701959456)",
-    hero_badge: "अपनी चमक पहनें। हर पल को अपना बनाएं।",
-    hero_title_1: "सदाबहार चमक",
-    hero_title_2: "शुद्ध रोल्ड गोल्ड",
-    hero_desc: "प्रामाणिक दक्षिण भारतीय रोल्ड गोल्ड और हस्तनिर्मित आभूषणों के शाही वैभव का अनुभव करें। 22 कैरेट असली सोने जैसा दिखने और महसूस होने वाला उत्कृष्ट आभूषण।",
+    hero_badge: "योवा सिग्नेचर गोल्ड",
+    hero_title_1: "हर पल को खास बनाने वाले",
+    hero_title_2: "शाही आभूषण",
+    hero_desc: "दक्षिण भारतीय विरासत से प्रेरित रोल्ड गोल्ड आभूषण। हर उत्सव में चमकने के लिए तैयार।",
     explore_collection: "कलेक्शन देखें",
-    order_on_whatsapp: "WhatsApp ऑर्डर",
-    trust_quality: "100% प्रामाणिक रोल्ड गोल्ड",
-    trust_handmade: "हस्तनिर्मित कारीगरी",
-    trust_shipping: "सुरक्षित होम डिलीवरी",
+    hero_trust_1_title: "सदाबहार गोल्ड फिनिश",
+    hero_trust_1_sub: "प्रतिदिन पहनने के लिए उपयुक्त",
+    hero_trust_2_title: "हाथ से बनी नक्काशी",
+    hero_trust_2_sub: "पारंपरिक शिल्प कौशल",
+    hero_trust_3_title: "पूरे भारत में सुरक्षित डिलीवरी",
+    hero_trust_3_sub: "विश्वसनीय और तेज़ सेवा",
     hero_badge_featured: "विशेष ब्राइडल कलेक्शन",
     hero_badge_sub: "हस्तनिर्मित एंटीक मास्टरपीस",
     pillar_1_title: "प्रामाणिक रोल्ड गोल्ड",
@@ -408,7 +414,7 @@ const translations = {
     review_2_text: "\"WhatsApp के जरिए हैंडमेड मोर कड़े मंगवाए। बहुत त्वरित प्रतिक्रिया मिली और 3 दिनों में सुरक्षित पैकिंग के साथ डिलीवरी हो गई।\"",
     review_3_text: "\"गुटपुसलु नेकलेस की गुणवत्ता बेहतरीन है! मोतियों और लाल पत्थरों की चमक बहुत शाही है। WhatsApp पर एक क्लिक में ऑर्डर करना बहुत आसान था।\"",
     follow_insta: "Instagram पर हमारे साथ जुड़ें",
-    insta_desc: "नए डिज़ाइनों, रील्स और अपडेट्स के लिए @YovaCollections को फ़ॉलो करें।",
+    insta_desc: "ज्वेलरी अपडेट्स, स्टाइलिंग और नए कलेक्शन के लिए @pooj_i5 को फ़ॉलो करें।",
     catalog_tag: "पूर्ण संग्रह",
     catalog_title: "रोल्ड गोल्ड और हैंडमेड आभूषण",
     catalog_sub: "दक्षिण भारतीय हार, चोकर, कंगन और एंटीक झुमकों की संपूर्ण श्रृंखला देखें।",
@@ -865,9 +871,9 @@ const translations = {
 };
 
 // ==========================================
-// 2. PRODUCT CATALOG DATA
+// 2. PRODUCT CATALOG DATA (Default Curated Pieces / Fallback)
 // ==========================================
-const productsData = [
+let productsData = [
   {
     id: "p1",
     name: {
@@ -1145,6 +1151,97 @@ const productsData = [
 ];
 
 // ==========================================
+// 2B. PRODUCT NORMALIZATION & GETTER HELPERS
+// ==========================================
+function getProductName(product, lang = appState.currentLang) {
+  if (!product) return "";
+  if (typeof product.name === "string") return product.name;
+  if (typeof product.name === "object") return product.name[lang] || product.name.en || "";
+  return "";
+}
+
+function getProductDescription(product, lang = appState.currentLang) {
+  if (!product) return "";
+  if (typeof product.description === "string") return product.description;
+  if (typeof product.description === "object") return product.description[lang] || product.description.en || "";
+  return "";
+}
+
+function getProductBadge(product, lang = appState.currentLang) {
+  if (!product) return "";
+  const dict = translations[lang] || translations.en;
+  if (product.inStock === false) {
+    return dict.out_of_stock || "Out of Stock";
+  }
+  if (product.badge) {
+    if (typeof product.badge === "string") return product.badge;
+    if (typeof product.badge === "object") return product.badge[lang] || product.badge.en || "";
+  }
+  if (product.isFeatured) return dict.featured || "Featured";
+  return product.isHandmade ? (dict.filter_handmade || "Handmade") : (dict.bestseller || "Bestseller");
+}
+
+function normalizeProduct(raw) {
+  const id = String(raw.id || "prod_" + Math.random().toString(36).substr(2, 9));
+  const name = typeof raw.name === "object" ? raw.name : {
+    en: raw.name || "Royal Rolled Gold Jewellery",
+    te: raw.name || "రాయల్ రోల్డ్ గోల్డ్ ఆభరణం",
+    hi: raw.name || "शाही रोल्ड गोल्ड आभूषण"
+  };
+  const category = raw.category || "necklaces";
+  const type = raw.type || (raw.isHandmade ? "handmade" : "rolled-gold");
+  const isHandmade = raw.isHandmade !== undefined ? Boolean(raw.isHandmade) : (raw.type === "handmade");
+  const price = Number(raw.price) || 0;
+  const originalPrice = Number(raw.originalPrice) || Math.round(price * 1.5);
+  const image = raw.image || "images/hero_jewellery.jpg";
+  const inStock = raw.inStock !== false && raw.available !== false;
+  const isFeatured = Boolean(raw.isFeatured || raw.featured);
+
+  let badge = raw.badge;
+  if (!badge) {
+    if (!inStock) {
+      badge = { en: "Out of Stock", te: "అందుబాటులో లేదు", hi: "स्टॉक में नहीं" };
+    } else if (isFeatured) {
+      badge = { en: "Featured", te: "ప్రత్యేకం", hi: "विशेष" };
+    } else if (isHandmade) {
+      badge = { en: "Handmade", te: "చేతిపని", hi: "హస్తనిర్మిత" };
+    } else {
+      badge = { en: "Bestseller", te: "బెస్ట్ సెల్లర్", hi: "बेस्टसेलर" };
+    }
+  } else if (typeof badge === "string") {
+    badge = { en: badge, te: badge, hi: badge };
+  }
+
+  const description = typeof raw.description === "object" ? raw.description : {
+    en: raw.description || "Authentic South Indian rolled gold jewellery crafted for timeless elegance.",
+    te: raw.description || "సాంప్రదాయ దక్షిణాది రోల్డ్ గోల్డ్ ఆభరణం.",
+    hi: raw.description || "पारंपरिक दक्षिण भारतीय रोल्ड गोल्ड आभूषण।"
+  };
+
+  const specs = typeof raw.specs === "object" ? raw.specs : {
+    en: { "Material": isHandmade ? "Handmade Rolled Gold" : "22K Rolled Gold", "Availability": inStock ? "In Stock" : "Out of Stock" },
+    te: { "పదార్థం": isHandmade ? "హ్యాండ్‌మేడ్ రోల్డ్ గోల్డ్" : "22K రోల్డ్ గోల్డ్", "లభ్యత": inStock ? "అందుబాటులో ఉంది" : "అయిపోయింది" },
+    hi: { "सामग्री": isHandmade ? "हस्तनिर्मित रोल्ड गोल्ड" : "22K रोल्ड गोल्ड", "उपलब्धता": inStock ? "उपलब्ध" : "स्टॉक समाप्त" }
+  };
+
+  return {
+    id,
+    name,
+    category,
+    type,
+    badge,
+    isHandmade,
+    price,
+    originalPrice,
+    image,
+    description,
+    specs,
+    inStock,
+    isFeatured
+  };
+}
+
+// ==========================================
 // 3. APPLICATION STATE
 // ==========================================
 const appState = {
@@ -1272,23 +1369,49 @@ function buildWhatsAppUrl(productName, price) {
 // ==========================================
 function createProductCardHTML(product) {
   const lang = appState.currentLang;
-  const name = product.name[lang] || product.name.en;
-  const badgeText = product.badge[lang] || product.badge.en;
+  const name = getProductName(product, lang);
+  const badgeText = getProductBadge(product, lang);
   const isHandmade = product.isHandmade;
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+  const inStock = product.inStock !== false;
+  const origPrice = product.originalPrice || Math.round(product.price * 1.5);
+  const discount = origPrice > product.price 
+    ? Math.round(((origPrice - product.price) / origPrice) * 100) 
+    : 0;
   const dict = translations[lang] || translations.en;
 
   const categoryLabels = {
     necklaces: dict.cat_necklaces || "Necklaces & Harams",
     bangles: dict.cat_bangles || "Bangles & Kadas",
-    earrings: dict.cat_earrings || "Antique Jhumkas"
+    earrings: dict.cat_earrings || "Antique Jhumkas",
+    "bridal-sets": dict.cat_bridal_rg || "Bridal Sets",
+    rings: "Finger Rings"
   };
 
+  const actionButtonsHTML = inStock ? `
+    <button class="btn btn-add-cart" onclick="event.stopPropagation(); addToCart('${product.id}')" title="${dict.add_to_cart || 'Add to Cart'}">
+      <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <span>${dict.add_to_cart || 'Add to Cart'}</span>
+    </button>
+    <button class="btn btn-buy-now" onclick="event.stopPropagation(); buyNow('${product.id}')" title="${dict.buy_now || 'Buy Now'}">
+      <svg class="icon flash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+      <span>${dict.buy_now || 'Buy Now'}</span>
+    </button>
+  ` : `
+    <button class="btn btn-out-of-stock" onclick="event.stopPropagation(); window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')" title="Enquire on WhatsApp">
+      <span>💬 Request Restock</span>
+    </button>
+  `;
+
   return `
-    <article class="product-card" data-id="${product.id}">
+    <article class="product-card ${!inStock ? 'product-out-of-stock' : ''}" data-id="${product.id}">
       <div class="card-media-wrapper" onclick="openQuickView('${product.id}')">
-        <span class="card-badge ${isHandmade ? 'handmade-badge' : ''}">${badgeText}</span>
-        <img src="${product.image}" alt="${name}" class="product-card-img" loading="lazy">
+        <span class="card-badge ${!inStock ? 'out-of-stock-badge' : (isHandmade ? 'handmade-badge' : '')}">${badgeText}</span>
+        <img src="${product.image}" alt="${name}" class="product-card-img" loading="lazy" onerror="this.src='images/hero_jewellery.jpg'">
         <button class="card-quick-view-btn" onclick="event.stopPropagation(); openQuickView('${product.id}')">
           👁️ ${dict.quick_view || 'Quick View'}
         </button>
@@ -1298,23 +1421,11 @@ function createProductCardHTML(product) {
         <h3 class="card-title">${name}</h3>
         <div class="card-price-row">
           <span class="card-price">₹${product.price.toLocaleString('en-IN')}</span>
-          <span class="card-original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-          <span class="card-discount-tag">${discount}% OFF</span>
+          <span class="card-original-price">₹${origPrice.toLocaleString('en-IN')}</span>
+          ${discount > 0 ? `<span class="card-discount-tag">${discount}% OFF</span>` : ''}
         </div>
         <div class="card-actions card-ecommerce-actions">
-          <button class="btn btn-add-cart" onclick="event.stopPropagation(); addToCart('${product.id}')" title="${dict.add_to_cart || 'Add to Cart'}">
-            <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-            <span>${dict.add_to_cart || 'Add to Cart'}</span>
-          </button>
-          <button class="btn btn-buy-now" onclick="event.stopPropagation(); buyNow('${product.id}')" title="${dict.buy_now || 'Buy Now'}">
-            <svg class="icon flash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-            <span>${dict.buy_now || 'Buy Now'}</span>
-          </button>
+          ${actionButtonsHTML}
         </div>
       </div>
     </article>
@@ -1324,9 +1435,15 @@ function createProductCardHTML(product) {
 function renderFeaturedProducts() {
   const container = document.getElementById("featuredProductsGrid");
   if (!container) return;
-  // Show 4 top featured products
-  const featured = productsData.slice(0, 4);
-  container.innerHTML = featured.map(createProductCardHTML).join("");
+  // Prioritize products marked as isFeatured
+  let featured = productsData.filter(p => p.isFeatured && p.inStock !== false);
+  if (featured.length === 0) {
+    featured = productsData.filter(p => p.inStock !== false).slice(0, 4);
+  }
+  if (featured.length === 0) {
+    featured = productsData.slice(0, 4);
+  }
+  container.innerHTML = featured.slice(0, 6).map(createProductCardHTML).join("");
 }
 
 function renderProductsCatalog() {
@@ -1352,11 +1469,10 @@ function renderProductsCatalog() {
   if (appState.searchQuery.trim()) {
     const q = appState.searchQuery.toLowerCase().trim();
     filtered = filtered.filter(p => {
-      const en = p.name.en.toLowerCase();
-      const te = p.name.te.toLowerCase();
-      const hi = p.name.hi.toLowerCase();
-      const cat = p.category.toLowerCase();
-      return en.includes(q) || te.includes(q) || hi.includes(q) || cat.includes(q);
+      const name = getProductName(p).toLowerCase();
+      const cat = (p.category || "").toLowerCase();
+      const desc = getProductDescription(p).toLowerCase();
+      return name.includes(q) || cat.includes(q) || desc.includes(q);
     });
   }
 
@@ -1367,7 +1483,7 @@ function renderProductsCatalog() {
     filtered.sort((a, b) => b.price - a.price);
   } else if (appState.sortBy === "name") {
     const lang = appState.currentLang;
-    filtered.sort((a, b) => (a.name[lang] || a.name.en).localeCompare(b.name[lang] || b.name.en));
+    filtered.sort((a, b) => getProductName(a, lang).localeCompare(getProductName(b, lang)));
   }
 
   // Update UI count
@@ -1399,10 +1515,10 @@ function renderGallery() {
   }
 
   container.innerHTML = items.map(p => {
-    const name = p.name[lang] || p.name.en;
+    const name = getProductName(p, lang);
     return `
       <div class="gallery-item" onclick="openLightbox('${p.id}')">
-        <img src="${p.image}" alt="${name}" class="gallery-thumb" loading="lazy">
+        <img src="${p.image}" alt="${name}" class="gallery-thumb" loading="lazy" onerror="this.src='images/hero_jewellery.jpg'">
         <div class="gallery-overlay">
           <div class="gallery-item-title">${name}</div>
           <div class="gallery-item-price">₹${p.price.toLocaleString('en-IN')}</div>
@@ -1418,7 +1534,7 @@ function openLightbox(productId) {
   if (!product) return;
 
   const lang = appState.currentLang;
-  const name = product.name[lang] || product.name.en;
+  const name = getProductName(product, lang);
   const dict = translations[lang] || translations.en;
 
   const modal = document.getElementById("galleryLightboxModal");
@@ -1452,28 +1568,52 @@ function openQuickView(productId) {
 
   appState.quickViewSelectedQty = 1;
   const lang = appState.currentLang;
-  const name = product.name[lang] || product.name.en;
-  const desc = product.description[lang] || product.description.en;
-  const specs = (product.specs[lang] || product.specs.en) || {};
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+  const name = getProductName(product, lang);
+  const desc = getProductDescription(product, lang);
+  const specs = (product.specs && (product.specs[lang] || product.specs.en || product.specs)) || {};
+  const inStock = product.inStock !== false;
+  const origPrice = product.originalPrice || Math.round(product.price * 1.5);
+  const discount = origPrice > product.price 
+    ? Math.round(((origPrice - product.price) / origPrice) * 100) 
+    : 0;
   const dict = translations[lang] || translations.en;
 
   const specsHTML = Object.entries(specs).map(([k, v]) => `
     <li><span>${k}</span> <strong>${v}</strong></li>
   `).join("");
 
+  const modalButtonsHTML = inStock ? `
+    <button class="btn btn-add-cart btn-modal-cart" onclick="addToCartFromQuickView('${product.id}')">
+      <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <span>${dict.add_to_cart || 'Add to Cart'}</span>
+    </button>
+    <button class="btn btn-buy-now btn-modal-buy" onclick="buyNowFromQuickView('${product.id}')">
+      <svg class="icon flash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+      <span>${dict.buy_now || 'Buy Now'}</span>
+    </button>
+  ` : `
+    <button class="btn btn-out-of-stock btn-modal-buy" onclick="window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')">
+      <span>💬 Enquire for Restock on WhatsApp</span>
+    </button>
+  `;
+
   const modalBody = document.getElementById("quickViewBody");
   modalBody.innerHTML = `
     <div class="modal-product-media">
-      <img src="${product.image}" alt="${name}" class="modal-product-img">
+      <img src="${product.image}" alt="${name}" class="modal-product-img" onerror="this.src='images/hero_jewellery.jpg'">
     </div>
     <div class="modal-product-details">
       <span class="modal-category-tag">${product.isHandmade ? '★ HANDMADE ROLLED GOLD' : '★ ROLLED GOLD CLASSIC'}</span>
       <h2 class="modal-product-title">${name}</h2>
       <div class="modal-price-row">
         <span class="modal-price">₹${product.price.toLocaleString('en-IN')}</span>
-        <span class="modal-orig-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
-        <span class="card-discount-tag">${discount}% OFF</span>
+        <span class="modal-orig-price">₹${origPrice.toLocaleString('en-IN')}</span>
+        ${discount > 0 ? `<span class="card-discount-tag">${discount}% OFF</span>` : ''}
       </div>
       <p class="modal-desc">${desc}</p>
       
@@ -1482,6 +1622,7 @@ function openQuickView(productId) {
       </ul>
 
       <div class="modal-qty-actions-row">
+        ${inStock ? `
         <div class="qty-selector-group">
           <label class="qty-label">${dict.qty || 'Qty'}:</label>
           <div class="qty-stepper">
@@ -1489,21 +1630,9 @@ function openQuickView(productId) {
             <span class="qty-stepper-val" id="quickViewQtyVal">1</span>
             <button type="button" class="qty-stepper-btn" onclick="adjustQuickViewQty(1)">+</button>
           </div>
-        </div>
+        </div>` : ''}
         <div class="modal-btn-row">
-          <button class="btn btn-add-cart btn-modal-cart" onclick="addToCartFromQuickView('${product.id}')">
-            <svg class="icon cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-            <span>${dict.add_to_cart || 'Add to Cart'}</span>
-          </button>
-          <button class="btn btn-buy-now btn-modal-buy" onclick="buyNowFromQuickView('${product.id}')">
-            <svg class="icon flash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-            <span>${dict.buy_now || 'Buy Now'}</span>
-          </button>
+          ${modalButtonsHTML}
         </div>
       </div>
     </div>
@@ -1576,7 +1705,7 @@ function addToCart(productId, qty = 1, showToastNotification = true) {
   if (showToastNotification) {
     const lang = appState.currentLang;
     const dict = translations[lang] || translations.en;
-    const name = product.name[lang] || product.name.en;
+    const name = getProductName(product, lang);
     showToast(dict.added_to_cart || "Added to Cart!", name, product.image);
   }
 }
@@ -1662,7 +1791,7 @@ function updateCartUI() {
   itemsContainer.innerHTML = appState.cart.map(item => {
     const product = productsData.find(p => p.id === item.id);
     if (!product) return "";
-    const name = product.name[lang] || product.name.en;
+    const name = getProductName(product, lang);
     const itemTotal = product.price * item.qty;
 
     return `
@@ -1762,7 +1891,7 @@ function renderCheckoutSummary() {
   container.innerHTML = appState.cart.map(item => {
     const product = productsData.find(p => p.id === item.id);
     if (!product) return "";
-    const name = product.name[lang] || product.name.en;
+    const name = getProductName(product, lang);
     const itemTotal = product.price * item.qty;
 
     return `
@@ -1845,7 +1974,7 @@ function handleOrderSubmit(e) {
     const itemsHTML = cartSnapshot.map(item => {
       const p = productsData.find(prod => prod.id === item.id);
       if (!p) return "";
-      const pName = p.name[lang] || p.name.en;
+      const pName = getProductName(p, lang);
       return `
         <div class="confirm-item-row">
           <span>${pName} (x${item.qty})</span>
@@ -2183,4 +2312,65 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFeaturedProducts();
   renderProductsCatalog();
   renderGallery();
+
+  // 11. Cloud Firestore Real-Time Sync
+  initFirebaseStorefront();
 });
+
+// ==========================================
+// 13. CLOUD FIRESTORE REAL-TIME STOREFRONT INTEGRATION
+// ==========================================
+async function initFirebaseStorefront() {
+  try {
+    const fb = await import("./firebase-config.js");
+    
+    // Check if Firebase is configured with real keys
+    if (!fb.isFirebaseConfigured() || !fb.db) {
+      console.log("ℹ️ YOVA Collections operating in boutique curated fallback mode. Add your Firebase keys in firebase-config.js to sync live products from Cloud Firestore.");
+      
+      // Also check if any products were created in local admin preview mode
+      const localCustom = localStorage.getItem("yova_custom_products");
+      if (localCustom) {
+        try {
+          const parsed = JSON.parse(localCustom);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            productsData = parsed.map(normalizeProduct);
+            renderFeaturedProducts();
+            renderProductsCatalog();
+            renderGallery();
+            console.log(`✨ Loaded ${parsed.length} custom preview products from local storage.`);
+          }
+        } catch(e) {}
+      }
+      return;
+    }
+
+    // Subscribe to real-time Cloud Firestore 'products' collection
+    const productsColl = fb.collection(fb.db, "products");
+    fb.onSnapshot(productsColl, (snapshot) => {
+      if (snapshot.empty) {
+        console.log("ℹ️ Firestore 'products' collection is currently empty. Retaining curated catalogue.");
+        return;
+      }
+
+      const remoteProducts = [];
+      snapshot.forEach((docSnap) => {
+        remoteProducts.push(normalizeProduct({ id: docSnap.id, ...docSnap.data() }));
+      });
+
+      if (remoteProducts.length > 0) {
+        productsData = remoteProducts;
+        renderFeaturedProducts();
+        renderProductsCatalog();
+        renderGallery();
+        updateCartUI();
+        console.log(`✨ YOVA Catalogue live-synced: ${remoteProducts.length} products loaded from Cloud Firestore.`);
+      }
+    }, (err) => {
+      console.warn("⚠️ Firestore subscription encountered an issue, continuing with boutique catalogue:", err);
+    });
+
+  } catch (err) {
+    console.warn("⚠️ Firebase module could not be initialized, continuing with boutique catalogue:", err);
+  }
+}

@@ -773,21 +773,42 @@ input, select, textarea {
   z-index: 2;
 }
 
+.hero-content {
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(90, 22, 35, 0.07);
-  border: 1px solid rgba(198, 154, 54, 0.5);
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(198, 154, 54, 0.45);
   border-radius: var(--radius-full);
-  padding: 0.4rem 1rem;
-  font-size: 0.825rem;
-  color: var(--emerald-800);
-  margin-bottom: 1.5rem;
+  padding: 0.45rem 1.15rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3D0F1A;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 4px 14px rgba(198, 154, 54, 0.12);
+  backdrop-filter: blur(6px);
 }
 
 .sparkle {
-  color: var(--gold-400);
+  color: var(--gold-500);
+  font-size: 0.9rem;
   animation: pulseSparkle 2s infinite ease-in-out;
 }
 
@@ -798,11 +819,12 @@ input, select, textarea {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: 3.25rem;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
   font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  color: var(--emerald-900);
+  line-height: 1.16;
+  margin-bottom: 1.35rem;
+  color: #2E0A12;
+  letter-spacing: -0.01em;
 }
 
 .gold-gradient-text {
@@ -813,12 +835,37 @@ input, select, textarea {
   display: inline-block;
 }
 
+/* Refined slow gold shimmer on highlighted words only */
+.gold-shimmer-highlight {
+  background: linear-gradient(
+    90deg, 
+    #B58726 0%, 
+    #E8CB7E 25%, 
+    #FFFDF5 50%, 
+    #E8CB7E 75%, 
+    #B58726 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: subtleGoldShimmer 7s linear infinite;
+}
+
+@keyframes subtleGoldShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
 .hero-description {
-  font-size: 1.075rem;
-  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: #5D4D44;
   margin-bottom: 2rem;
-  max-width: 540px;
-  line-height: 1.65;
+  max-width: 530px;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .hero-cta-group {
@@ -826,29 +873,89 @@ input, select, textarea {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.hero-trust-row {
+.btn-hero-explore {
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 0.95rem 2rem;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px rgba(198, 154, 54, 0.32);
+}
+
+/* Soft Gold Divider */
+.hero-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.45) 0%,
+    rgba(212, 175, 55, 0.15) 65%,
+    transparent 100%
+  );
+  margin-bottom: 1.75rem;
+}
+
+/* Three Premium Trust Cards */
+.hero-trust-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.hero-trust-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 14px rgba(90, 22, 35, 0.04);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-trust-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(198, 154, 54, 0.55);
+  box-shadow: 0 8px 20px rgba(198, 154, 54, 0.15);
+}
+
+.trust-card-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(237, 214, 138, 0.3) 0%, rgba(198, 154, 54, 0.12) 100%);
+  border: 1px solid rgba(198, 154, 54, 0.35);
+  color: #B58726;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  border-top: 1px solid var(--border-light);
-  padding-top: 1.75rem;
+  justify-content: center;
+  margin-bottom: 0.65rem;
+  flex-shrink: 0;
 }
 
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
+.trust-card-icon {
+  width: 17px;
+  height: 17px;
 }
 
-.trust-icon {
-  font-size: 1.1rem;
+.trust-card-title {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #2E0A12;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.trust-card-sub {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: #736359;
+  line-height: 1.35;
 }
 
 /* Hero Image Card */
@@ -2748,21 +2855,36 @@ input, select, textarea {
     font-size: 0.95rem;
   }
 
-  .hero-cta-group {
-    justify-content: center;
+  .hero-trust-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
   }
 
-  .hero-trust-row {
-    justify-content: center;
+  .hero-trust-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
   }
 
-  .hero-description {
-    font-size: 0.95rem;
+  .trust-card-icon-box {
+    margin-bottom: 0;
+  }
+
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-cta-group {
     flex-direction: column;
     align-items: stretch;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-cta-group .btn {
@@ -3801,5 +3923,38 @@ input, select, textarea {
   }
 }
 
+/* ==========================================
+   PRODUCT CATALOGUE EXTENSIONS (FIREBASE)
+   ========================================== */
+.card-badge.out-of-stock-badge {
+  background: #7D1B28 !important;
+  color: #FFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
 
+.product-card.product-out-of-stock .product-card-img {
+  filter: grayscale(25%) opacity(0.85);
+}
 
+.btn.btn-out-of-stock {
+  width: 100%;
+  background: #FAF5EB;
+  border: 1px solid #C69A36;
+  color: #3D0F1A;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn.btn-out-of-stock:hover {
+  background: #3D0F1A;
+  color: #FFF;
+}
