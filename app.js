@@ -2114,8 +2114,10 @@ function switchPage(pageId) {
     link.classList.toggle("active", link.dataset.page === pageId);
   });
 
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Scroll to top if page is scrolled
+  if (window.scrollY > 0) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
 function filterByCategory(cat) {
@@ -2279,16 +2281,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 8. Hash-based URL Routing (e.g. #products, #about)
+  // 8. Page Routing & Hash Handling
+  const isDedicatedCollectionPage =
+    window.location.pathname.endsWith("collection.html") ||
+    window.location.pathname.endsWith("products.html") ||
+    window.location.pathname.endsWith("/collection") ||
+    window.location.pathname.endsWith("/products") ||
+    (document.body && document.body.dataset.pageType === "collection");
+
   function handleHashChange() {
-    const hash = window.location.hash.replace("#", "") || "home";
-    switchPage(hash);
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      switchPage(hash);
+    } else {
+      switchPage(isDedicatedCollectionPage ? "products" : "home");
+    }
   }
   window.addEventListener("hashchange", handleHashChange);
+
+  // Check URL category query param (e.g. ?category=necklaces or ?cat=handmade)
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedCat = urlParams.get("category") || urlParams.get("cat");
+
   if (window.location.hash) {
     handleHashChange();
   } else {
-    switchPage("home");
+    switchPage(isDedicatedCollectionPage ? "products" : "home");
+  }
+
+  if (requestedCat) {
+    filterByCategory(requestedCat);
   }
 
   // 9. Close Modals on Overlay Click or ESC

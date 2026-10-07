@@ -21,13 +21,105 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   let reqPath = parsedUrl.pathname;
 
-  // Root URL opens Welcome page, /home opens the boutique Home page, /admin opens Admin Portal
+  // Root URL opens Welcome page, /home opens the boutique Home page, /collection and /products open Collection page, /admin opens Admin Portal
   if (reqPath === '/' || reqPath === '') {
     reqPath = '/index.html';
   } else if (reqPath === '/home') {
     reqPath = '/home.html';
+  } else if (reqPath === '/collection' || reqPath === '/products') {
+    reqPath = '/collection.html';
   } else if (reqPath === '/admin') {
     reqPath = '/admin.html';
+  }
+
+  // Handle Orders REST API (/api/orders)
+  if (reqPath.startsWith('/api/orders')) {
+    const ordersFilePath = path.join(__dirname, 'orders.json');
+
+    const readOrders = () => {
+      try {
+        if (!fs.existsSync(ordersFilePath)) {
+          fs.writeFileSync(ordersFilePath, '[]', 'utf8');
+        }
+        const data = fs.readFileSync(ordersFilePath, 'utf8');
+        return JSON.parse(data || '[]');
+      } catch (e) {
+        return [];
+      }
+    };
+
+    const writeOrders = (orders) => {
+      fs.writeFileSync(ordersFilePath, JSON.stringify(orders, null, 2), 'utf8');
+    };
+
+    if (req.method === 'GET') {
+      const orders = readOrders();
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      return res.end(JSON.stringify(orders));
+    }
+
+    if (req.method === 'POST') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', () => {
+        try {
+          const newOrder = JSON.parse(body || '{}');
+          if (!newOrder.id) {
+            newOrder.id = 'YV-' + Math.floor(100000 + Math.random() * 900000);
+          }
+          if (!newOrder.createdAt) {
+            newOrder.createdAt = new Date().toISOString();
+          }
+          if (!newOrder.status) {
+            newOrder.status = 'Pending';
+          }
+          const orders = readOrders();
+          orders.unshift(newOrder); // newest first
+          writeOrders(orders);
+          res.writeHead(201, { 'Content-Type': 'application/json; charset=utf-8' });
+          return res.end(JSON.stringify({ success: true, order: newOrder }));
+        } catch (err) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          return res.end(JSON.stringify({ success: false, error: 'Invalid order JSON' }));
+        }
+      });
+      return;
+    }
+
+    if (req.method === 'PATCH' || req.method === 'PUT') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', () => {
+        try {
+          const payload = JSON.parse(body || '{}');
+          const orderId = payload.id || reqPath.split('/').pop();
+          const orders = readOrders();
+          const idx = orders.findIndex(o => o.id === orderId);
+          if (idx !== -1) {
+            orders[idx] = { ...orders[idx], ...payload, id: orderId };
+            writeOrders(orders);
+            res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+            return res.end(JSON.stringify({ success: true, order: orders[idx] }));
+          } else {
+            res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
+            return res.end(JSON.stringify({ success: false, error: 'Order not found' }));
+          }
+        } catch (err) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          return res.end(JSON.stringify({ success: false, error: 'Invalid JSON' }));
+        }
+      });
+      return;
+    }
+
+    if (req.method === 'DELETE') {
+      const orderId = reqPath.split('/').pop();
+      const orders = readOrders();
+      const filtered = orders.filter(o => o.id !== orderId);
+      writeOrders(filtered);
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      return res.end(JSON.stringify({ success: true, deleted: orderId }));
+    }
   }
 
   const filePath = path.join(__dirname, decodeURIComponent(reqPath));

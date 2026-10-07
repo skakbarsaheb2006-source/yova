@@ -40,7 +40,7 @@
       <!-- Desktop Nav Links -->
       <nav class="nav-menu" id="navMenu">
         <a href="#home" class="nav-link active" data-page="home" data-i18n="nav_home">Home</a>
-        <a href="#products" class="nav-link" data-page="products" data-i18n="nav_products">Products</a>
+        <a href="collection.html" class="nav-link" data-page="products" data-i18n="nav_products">Products</a>
         <a href="#about" class="nav-link" data-page="about" data-i18n="nav_about">About Us</a>
         <a href="#gallery" class="nav-link" data-page="gallery" data-i18n="nav_gallery">Gallery</a>
         <a href="#contact" class="nav-link" data-page="contact" data-i18n="nav_contact">Contact</a>
@@ -168,7 +168,7 @@
         <a href="#home" class="mobile-link active" data-page="home" onclick="closeDrawer(); switchPage('home');">
           <span data-i18n="nav_home">Home</span> <span>→</span>
         </a>
-        <a href="#products" class="mobile-link" data-page="products" onclick="closeDrawer(); switchPage('products');">
+        <a href="collection.html" class="mobile-link" data-page="products" onclick="closeDrawer();">
           <span data-i18n="nav_products">Products</span> <span>→</span>
         </a>
         <a href="#about" class="mobile-link" data-page="about" onclick="closeDrawer(); switchPage('about');">
@@ -200,7 +200,7 @@
   <main id="mainApp">
 
     <!-- 0. OPENING WELCOME PAGE (SPLASH / ENTRANCE) -->
-    <section id="page-welcome" class="page-view active">
+    <section id="page-welcome" class="page-view">
       <div class="welcome-screen">
         <div class="welcome-bg-glow"></div>
         <div class="container welcome-container">
@@ -238,7 +238,7 @@
     </section>
 
     <!-- 1. HOME VIEW -->
-    <section id="page-home" class="page-view">
+    <section id="page-home" class="page-view active">
       <!-- Luxury Hero Section with Emerald Backdrop & Gold Glow -->
       <div class="hero-section">
         <div class="hero-bg-overlay"></div>
@@ -263,7 +263,7 @@
 
             <!-- Primary Action Button -->
             <div class="hero-cta-group">
-              <a href="#products" class="btn btn-primary btn-hero-explore" onclick="switchPage('products')">
+              <a href="collection.html" class="btn btn-primary btn-hero-explore">
                 <span data-i18n="explore_collection">EXPLORE COLLECTION</span>
                 <span class="arrow-icon">→</span>
               </a>
@@ -365,7 +365,7 @@
           </div>
 
           <div class="text-center view-all-box">
-            <a href="#products" class="btn btn-secondary" onclick="switchPage('products')">
+            <a href="collection.html" class="btn btn-secondary">
               <span data-i18n="view_all_products">View Full Jewellery Catalogue</span>
               <span>→</span>
             </a>
@@ -1013,7 +1013,7 @@
         <h4 class="footer-col-title" data-i18n="quick_links">Explore Pages</h4>
         <ul class="footer-links">
           <li><a href="#home" onclick="switchPage('home')" data-i18n="nav_home">Home</a></li>
-          <li><a href="#products" onclick="switchPage('products')" data-i18n="nav_products">Products Catalogue</a></li>
+          <li><a href="collection.html" data-i18n="nav_products">Products Catalogue</a></li>
           <li><a href="#about" onclick="switchPage('about')" data-i18n="nav_about">About Us & Craft</a></li>
           <li><a href="#gallery" onclick="switchPage('gallery')" data-i18n="nav_gallery">Visual Gallery</a></li>
           <li><a href="#contact" onclick="switchPage('contact')" data-i18n="nav_contact">Contact Us</a></li>
@@ -1024,11 +1024,11 @@
       <div class="footer-col">
         <h4 class="footer-col-title" data-i18n="jewellery_categories">Jewellery Categories</h4>
         <ul class="footer-links">
-          <li><a href="#products" onclick="switchPage('products'); filterByCategory('handmade');" data-i18n="cat_handmade_rg">Handmade Rolled Gold</a></li>
-          <li><a href="#products" onclick="switchPage('products'); filterByCategory('necklaces');" data-i18n="cat_temple_neck">Temple Harams & Chokers</a></li>
-          <li><a href="#products" onclick="switchPage('products'); filterByCategory('bangles');" data-i18n="cat_antique_kadas">Antique Peacock Kadas</a></li>
-          <li><a href="#products" onclick="switchPage('products'); filterByCategory('earrings');" data-i18n="cat_kemp_jhumkas">Kemp Jhumkas & Earrings</a></li>
-          <li><a href="#products" onclick="switchPage('products'); filterByCategory('rolled-gold');" data-i18n="cat_bridal_rg">Bridal Gutpusalu Sets</a></li>
+          <li><a href="collection.html?category=handmade" data-i18n="cat_handmade_rg">Handmade Rolled Gold</a></li>
+          <li><a href="collection.html?category=necklaces" data-i18n="cat_temple_neck">Temple Harams & Chokers</a></li>
+          <li><a href="collection.html?category=bangles" data-i18n="cat_antique_kadas">Antique Peacock Kadas</a></li>
+          <li><a href="collection.html?category=earrings" data-i18n="cat_kemp_jhumkas">Kemp Jhumkas & Earrings</a></li>
+          <li><a href="collection.html?category=rolled-gold" data-i18n="cat_bridal_rg">Bridal Gutpusalu Sets</a></li>
         </ul>
       </div>
 
@@ -1080,7 +1080,7 @@
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span data-i18n="nav_home">Home</span>
     </a>
-    <a href="#products" class="m-bar-btn" data-page="products" onclick="switchPage('products')">
+    <a href="collection.html" class="m-bar-btn" data-page="products">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       <span data-i18n="nav_products">Shop</span>
     </a>
