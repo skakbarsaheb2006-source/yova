@@ -71,7 +71,10 @@ const server = http.createServer((req, res) => {
             newOrder.createdAt = new Date().toISOString();
           }
           if (!newOrder.status) {
-            newOrder.status = 'Pending';
+            newOrder.status = newOrder.orderStatus || 'Pending';
+          }
+          if (!newOrder.orderStatus) {
+            newOrder.orderStatus = newOrder.status || 'Pending';
           }
           const orders = readOrders();
           orders.unshift(newOrder); // newest first
@@ -96,6 +99,8 @@ const server = http.createServer((req, res) => {
           const orders = readOrders();
           const idx = orders.findIndex(o => o.id === orderId);
           if (idx !== -1) {
+            if (payload.orderStatus && !payload.status) payload.status = payload.orderStatus;
+            if (payload.status && !payload.orderStatus) payload.orderStatus = payload.status;
             orders[idx] = { ...orders[idx], ...payload, id: orderId };
             writeOrders(orders);
             res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });

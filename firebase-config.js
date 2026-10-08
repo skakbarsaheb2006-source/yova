@@ -24,6 +24,7 @@ import {
   collection, 
   doc, 
   addDoc, 
+  setDoc, 
   updateDoc, 
   deleteDoc, 
   getDocs, 
@@ -44,12 +45,13 @@ import {
 // REPLACE THESE VALUES WITH YOUR FIREBASE PROJECT CREDENTIALS
 // =========================================================================
 export const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_FIREBASE_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_FIREBASE_PROJECT_ID",
-  storageBucket: "YOUR_FIREBASE_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyBPpqm1sDBRhQXSjSyjN4vp9f_y4oCXFBU",
+  authDomain: "yova-collections.firebaseapp.com",
+  projectId: "yova-collections",
+  storageBucket: "yova-collections.firebasestorage.app",
+  messagingSenderId: "700218640312",
+  appId: "1:700218640312:web:c3969e80991e859cf2b14d",
+  measurementId: "G-Q1XQE0951Q"
 };
 
 export function isFirebaseConfigured() {
@@ -96,6 +98,7 @@ export {
   collection,
   doc,
   addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   getDocs,

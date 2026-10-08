@@ -15,6 +15,7 @@ import {
   collection,
   doc,
   addDoc,
+  getDocs,
   updateDoc,
   deleteDoc,
   onSnapshot,
@@ -28,9 +29,13 @@ import {
 
 // Local state
 let currentProducts = [];
+let currentOrders = [];
+let currentReviews = [];
 let selectedImageFile = null;
 let pendingDeleteId = null;
 let isSubmitting = false;
+let activeAdminTab = "orders";
+let selectedOrderForModal = null;
 
 // DOM Elements
 const authView = document.getElementById("authView");
@@ -38,7 +43,44 @@ const dashboardView = document.getElementById("dashboardView");
 const navAuthControls = document.getElementById("navAuthControls");
 const userEmailDisplay = document.getElementById("userEmailDisplay");
 const logoutBtn = document.getElementById("logoutBtn");
+const ADMIN_EMAIL = "sk.akbarsaheb2006@gmail.com";
 const firebaseSetupBanner = document.getElementById("firebaseSetupBanner");
+
+// Tabs Elements
+const tabOrdersBtn = document.getElementById("tabOrdersBtn");
+const tabProductsBtn = document.getElementById("tabProductsBtn");
+const tabReviewsBtn = document.getElementById("tabReviewsBtn");
+const tabOrdersBadge = document.getElementById("tabOrdersBadge");
+const tabProductsBadge = document.getElementById("tabProductsBadge");
+const tabReviewsBadge = document.getElementById("tabReviewsBadge");
+const tabOrdersView = document.getElementById("tabOrdersView");
+const tabProductsView = document.getElementById("tabProductsView");
+const tabReviewsView = document.getElementById("tabReviewsView");
+const reviewsTableBody = document.getElementById("reviewsTableBody");
+const refreshReviewsBtn = document.getElementById("refreshReviewsBtn");
+
+// Orders Management Elements
+const statOrdersTotal = document.getElementById("statOrdersTotal");
+const statOrdersPending = document.getElementById("statOrdersPending");
+const statOrdersShipped = document.getElementById("statOrdersShipped");
+const statOrdersRevenue = document.getElementById("statOrdersRevenue");
+const ordersSearchInput = document.getElementById("ordersSearchInput");
+const ordersStatusFilter = document.getElementById("ordersStatusFilter");
+const refreshOrdersBtn = document.getElementById("refreshOrdersBtn");
+const ordersTableBody = document.getElementById("ordersTableBody");
+
+// Order Modal Elements
+const orderDetailsModal = document.getElementById("orderDetailsModal");
+const modalOrderTitle = document.getElementById("modalOrderTitle");
+const modalOrderDate = document.getElementById("modalOrderDate");
+const modalCustomerInfo = document.getElementById("modalCustomerInfo");
+const modalPaymentInfo = document.getElementById("modalPaymentInfo");
+const modalStatusSelect = document.getElementById("modalStatusSelect");
+const modalOrderItemsList = document.getElementById("modalOrderItemsList");
+const modalOrderTotal = document.getElementById("modalOrderTotal");
+const modalWhatsAppCustomerBtn = document.getElementById("modalWhatsAppCustomerBtn");
+const closeOrderModalBtn = document.getElementById("closeOrderModalBtn");
+const modalCloseActionBtn = document.getElementById("modalCloseActionBtn");
 
 // Login Elements
 const loginForm = document.getElementById("loginForm");
@@ -100,34 +142,35 @@ function showAlert(message, type = "success") {
 // 1. AUTHENTICATION LIFECYCLE
 // ==========================================
 function initAuth() {
-  if (!isFirebaseConfigured()) {
+  if (!isFirebaseConfigured() || !auth) {
     if (firebaseSetupBanner) firebaseSetupBanner.style.display = "flex";
-    console.warn("Firebase credentials not configured in firebase-config.js.");
-  }
-
-  if (!auth) {
-    // Graceful fallback for UI preview before user pastes Firebase credentials
-    setupDemoFallbackAuth();
+    authView.style.display = "flex";
+    dashboardView.style.display = "none";
+    navAuthControls.style.display = "none";
+    console.warn("Firebase must be configured before the admin portal can be used.");
     return;
   }
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in
+  onAuthStateChanged(auth, async (user) => {
+    if (user && (user.email || "").toLowerCase() === ADMIN_EMAIL) {
       authView.style.display = "none";
       dashboardView.style.display = "block";
       navAuthControls.style.display = "flex";
-      userEmailDisplay.textContent = user.email || "Admin";
+      userEmailDisplay.textContent = user.email;
       bindRealtimeProducts();
+      fetchOrders();
+      switchAdminTab("orders");
     } else {
-      // User is signed out
+      if (user) {
+        await signOut(auth);
+        showAlert(`Admin access is limited to ${ADMIN_EMAIL}.`, "error");
+      }
       authView.style.display = "flex";
       dashboardView.style.display = "none";
       navAuthControls.style.display = "none";
     }
   });
 }
-
 // Sign-in handler
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -144,14 +187,13 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     if (!isFirebaseConfigured() || !auth) {
-      // In demo mode prior to pasting real keys
-      sessionStorage.setItem("yova_demo_admin_logged_in", "true");
-      sessionStorage.setItem("yova_demo_admin_email", email);
-      showAlert("Preview mode: Sign-in successful. Remember to paste your Firebase credentials into firebase-config.js!", "success");
-      setupDemoFallbackAuth();
+      showAlert("Firebase setup is required before admin sign-in.", "error");
       return;
     }
-
+    if (email.toLowerCase() !== ADMIN_EMAIL) {
+      showAlert(`Only ${ADMIN_EMAIL} can access this admin portal.`, "error");
+      return;
+    }
     await signInWithEmailAndPassword(auth, email, password);
     showAlert("Welcome back to YOVA Collections Admin Portal!", "success");
     loginForm.reset();
@@ -175,35 +217,12 @@ loginForm.addEventListener("submit", async (e) => {
 // Logout handler
 logoutBtn.addEventListener("click", async () => {
   try {
-    if (auth && isFirebaseConfigured()) {
-      await signOut(auth);
-    } else {
-      sessionStorage.removeItem("yova_demo_admin_logged_in");
-      sessionStorage.removeItem("yova_demo_admin_email");
-      setupDemoFallbackAuth();
-    }
+    if (auth && isFirebaseConfigured()) await signOut(auth);
     showAlert("You have been signed out successfully.", "success");
   } catch (err) {
     console.error("Logout error:", err);
   }
 });
-
-// Demo fallback when Firebase project is not yet created
-function setupDemoFallbackAuth() {
-  const isDemoLoggedIn = sessionStorage.getItem("yova_demo_admin_logged_in") === "true";
-  if (isDemoLoggedIn) {
-    authView.style.display = "none";
-    dashboardView.style.display = "block";
-    navAuthControls.style.display = "flex";
-    userEmailDisplay.textContent = sessionStorage.getItem("yova_demo_admin_email") || "admin@yovacollections.com";
-    loadLocalFallbackProducts();
-  } else {
-    authView.style.display = "flex";
-    dashboardView.style.display = "none";
-    navAuthControls.style.display = "none";
-  }
-}
-
 // ==========================================
 // 2. IMAGE PREVIEW & UPLOAD HANDLING
 // ==========================================
@@ -643,5 +662,426 @@ catalogSearchInput.addEventListener("input", () => {
   renderProductsTable(currentProducts);
 });
 
+// ==========================================
+// 5. ORDERS MANAGEMENT & DIRECT CHECKOUT FLOW
+// ==========================================
+
+function switchAdminTab(tab) {
+  activeAdminTab = tab;
+  const views = { orders: tabOrdersView, products: tabProductsView, reviews: tabReviewsView };
+  const buttons = { orders: tabOrdersBtn, products: tabProductsBtn, reviews: tabReviewsBtn };
+  Object.entries(views).forEach(([name, view]) => {
+    if (view) view.style.display = name === tab ? "block" : "none";
+    if (buttons[name]) buttons[name].classList.toggle("active", name === tab);
+  });
+  if (tab === "orders") fetchOrders();
+  if (tab === "reviews") fetchReviews();
+  if (tab === "products" && currentProducts.length > 0) {
+    renderProductsTable(currentProducts);
+    updateStats(currentProducts);
+  }
+}
+window.switchAdminTab = switchAdminTab;
+
+async function fetchOrders() {
+  if (ordersTableBody) {
+    ordersTableBody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">⏳</div><p>Loading customer orders...</p></div></td></tr>`;
+  }
+
+  try {
+    if (!db || !isFirebaseConfigured()) {
+      throw new Error("Firebase Firestore is not configured.");
+    }
+    const snapshot = await getDocs(collection(db, "orders"));
+    currentOrders = snapshot.docs.map((orderDoc) => ({ id: orderDoc.id, ...orderDoc.data() }));
+    currentOrders.sort((a, b) => {
+      const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt || a.date || 0);
+      const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt || b.date || 0);
+      return dateB - dateA;
+    });
+    renderOrdersTable();
+    updateOrdersStats();
+  } catch (err) {
+    console.error("Could not fetch Firestore orders:", err);
+    currentOrders = [];
+    renderOrdersTable();
+    updateOrdersStats();
+    showAlert("Could not load Firestore orders. Check that the published rules allow admin access.", "error");
+  }
+}
+window.fetchOrders = fetchOrders;
+async function fetchReviews() {
+  if (!reviewsTableBody) return;
+  reviewsTableBody.innerHTML = `<tr><td colspan="5"><div class="empty-state"><p>Loading customer reviews...</p></div></td></tr>`;
+  try {
+    if (!db || !isFirebaseConfigured()) throw new Error("Firebase is not configured.");
+    const snapshot = await getDocs(collection(db, "reviews"));
+    currentReviews = snapshot.docs.map((reviewDoc) => ({ id: reviewDoc.id, ...reviewDoc.data() }));
+    currentReviews.sort((a, b) => {
+      const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt || 0);
+      const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt || 0);
+      return dateB - dateA;
+    });
+    renderReviewsTable();
+    if (tabReviewsBadge) tabReviewsBadge.textContent = currentReviews.length;
+  } catch (error) {
+    console.error("Could not fetch Firestore reviews:", error);
+    currentReviews = [];
+    renderReviewsTable();
+    showAlert("Could not load reviews. Check that Firestore rules allow admin access.", "error");
+  }
+}
+
+function escapeReviewText(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+}
+
+function renderReviewsTable() {
+  if (!reviewsTableBody) return;
+  if (!currentReviews.length) {
+    reviewsTableBody.innerHTML = `<tr><td colspan="5"><div class="empty-state"><p>No customer reviews found.</p></div></td></tr>`;
+    return;
+  }
+  reviewsTableBody.innerHTML = currentReviews.map((review) => {
+    const date = review.createdAt?.toDate ? review.createdAt.toDate() : new Date(review.createdAt || 0);
+    const dateText = Number.isNaN(date.getTime()) ? "—" : date.toLocaleDateString("en-IN");
+    const stars = "★".repeat(Math.max(0, Math.min(5, Number(review.rating) || 0)));
+    return `<tr><td>${escapeReviewText(dateText)}</td><td>${escapeReviewText(review.customerName)}</td><td>${escapeReviewText(review.productName)}</td><td style="color:var(--gold-dark);">${stars}</td><td style="white-space:normal;min-width:220px;">${escapeReviewText(review.reviewText)}</td></tr>`;
+  }).join("");
+}
+
+function updateOrdersStats() {
+  const total = currentOrders.length;
+  const pending = currentOrders.filter(o => (o.orderStatus || o.status || "Pending").toLowerCase() === "pending").length;
+  const shipped = currentOrders.filter(o => ["confirmed", "shipped"].includes((o.orderStatus || o.status || "").toLowerCase())).length;
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  const thisMonthOrders = currentOrders.filter((order) => {
+    const date = order.createdAt?.toDate ? order.createdAt.toDate() : new Date(order.createdAt || order.date || 0);
+    const status = (order.orderStatus || order.status || "").toLowerCase();
+    return !Number.isNaN(date.getTime()) && date >= monthStart && date < nextMonth && status !== "cancelled";
+  });
+  const monthSales = thisMonthOrders.reduce((sum, order) => sum + (Number(order.total) || 0), 0);
+
+  if (statOrdersTotal) statOrdersTotal.textContent = total;
+  if (statOrdersPending) statOrdersPending.textContent = pending;
+  if (statOrdersShipped) statOrdersShipped.textContent = shipped;
+  if (statOrdersRevenue) statOrdersRevenue.textContent = "₹" + monthSales.toLocaleString("en-IN");
+  if (tabOrdersBadge) tabOrdersBadge.textContent = pending;
+  if (tabProductsBadge) tabProductsBadge.textContent = currentProducts.length;
+}
+function renderOrdersTable() {
+  if (!ordersTableBody) return;
+
+  const q = (ordersSearchInput?.value || "").toLowerCase().trim();
+  const statusFilter = ordersStatusFilter?.value || "all";
+
+  let filtered = currentOrders;
+
+  // Filter by status dropdown
+  if (statusFilter !== "all") {
+    filtered = filtered.filter(o => {
+      const currentStat = (o.orderStatus || o.status || "Pending").toLowerCase();
+      return currentStat === statusFilter.toLowerCase();
+    });
+  }
+
+  // Filter by search query (customer name, phone, order ID, city, products)
+  if (q) {
+    filtered = filtered.filter(o => {
+      const idMatch = (o.id || "").toLowerCase().includes(q);
+      const cust = o.customer || {};
+      const nameMatch = (cust.name || "").toLowerCase().includes(q);
+      const phoneMatch = (cust.phone || "").toLowerCase().includes(q);
+      const cityMatch = (cust.city || "").toLowerCase().includes(q);
+      const itemsMatch = (o.items || []).some(it => (it.name || "").toLowerCase().includes(q));
+      return idMatch || nameMatch || phoneMatch || cityMatch || itemsMatch;
+    });
+  }
+
+  if (filtered.length === 0) {
+    ordersTableBody.innerHTML = `
+      <tr>
+        <td colspan="6">
+          <div class="empty-state">
+            <div class="empty-state-icon">🛍️</div>
+            <p>No customer orders found matching your filter.</p>
+          </div>
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  ordersTableBody.innerHTML = filtered.map(order => {
+    const cust = order.customer || {};
+    const items = order.items || [];
+    const status = order.orderStatus || order.status || "Pending";
+    const statusClass = status.toLowerCase();
+    const cleanPhone = (cust.phone || "").replace(/\D/g, "");
+
+    // Structured items preview
+    const itemsPreviewHTML = items.map(it => `
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <img src="${it.image || 'images/hero_jewellery.jpg'}" alt="${it.name || ''}" style="width:34px; height:34px; object-fit:cover; border-radius:4px; border:1px solid #C69A36;">
+        <div style="font-size:12px; line-height:1.2;">
+          <strong>${it.name || 'Jewellery Piece'}</strong>
+          <span style="color:#6B635B;"> × ${it.qty || 1} (₹${(it.price || 0).toLocaleString('en-IN')})</span>
+        </div>
+      </div>
+    `).join("");
+
+    // WhatsApp Message URL for customer updates
+    const waUpdateMsg = `Hi ${cust.name || 'Valued Customer'}, regarding your YOVA Collections Order #${order.id} for ₹${(order.total || 0).toLocaleString('en-IN')}. Current status: *${status}*. Thank you for shopping with us!`;
+    const waCustomerUrl = `https://wa.me/91${cleanPhone}?text=${encodeURIComponent(waUpdateMsg)}`;
+
+    return `
+      <tr>
+        <td>
+          <div style="font-weight:700; color:var(--burgundy); font-size:14px;">#${order.id}</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">${order.date || new Date(order.createdAt || Date.now()).toLocaleDateString('en-IN')}</div>
+          <span style="display:inline-block; font-size:10px; background:#FAF5EB; color:#8F6918; padding:2px 6px; border-radius:4px; border:1px solid rgba(198,154,54,0.3); margin-top:4px;">Website Direct</span>
+        </td>
+        <td>
+          <div style="font-weight:700; color:var(--text-dark);">${cust.name || 'Anonymous Customer'}</div>
+          <div style="font-size:12px; color:var(--text-muted); margin:2px 0;">
+            📱 <strong>${cust.phone || '-'}</strong> ${cust.email ? `&bull; ✉️ ${cust.email}` : ''}
+          </div>
+          <div style="font-size:11px; color:var(--text-muted); line-height:1.3; max-width:240px;">
+            ${cust.address || ''}${cust.city ? ', ' + cust.city : ''}${cust.state ? ', ' + cust.state : ''}${cust.pincode ? ' - ' + cust.pincode : ''}
+          </div>
+        </td>
+        <td>
+          <div style="max-height:110px; overflow-y:auto;">
+            ${itemsPreviewHTML || '<span style="color:var(--text-muted); font-size:12px;">No item details</span>'}
+          </div>
+        </td>
+        <td>
+          <strong style="color:var(--burgundy); font-size:15px;">₹${(order.total || 0).toLocaleString('en-IN')}</strong>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">
+            ${(order.paymentMethod || 'UPI').toUpperCase()} &bull; <span style="color:#1E7E34; font-weight:600;">${order.paymentStatus || 'Confirmed'}</span>
+          </div>
+        </td>
+        <td>
+          <select class="status-select ${statusClass}" onchange="updateOrderStatus('${order.id}', this.value)" title="Change order status">
+            <option value="Pending" ${status === "Pending" ? "selected" : ""}>Pending</option>
+            <option value="Confirmed" ${status === "Confirmed" ? "selected" : ""}>Confirmed</option>
+            <option value="Shipped" ${status === "Shipped" ? "selected" : ""}>Shipped</option>
+            <option value="Delivered" ${status === "Delivered" ? "selected" : ""}>Delivered</option>
+            <option value="Cancelled" ${status === "Cancelled" ? "selected" : ""}>Cancelled</option>
+          </select>
+        </td>
+        <td style="text-align: right;">
+          <div class="table-actions" style="justify-content: flex-end;">
+            <button class="btn-action view" onclick="openOrderDetails('${order.id}')" title="View complete order receipt">
+              👁️ View
+            </button>
+            <a class="btn-action wa" href="${waCustomerUrl}" target="_blank" rel="noopener" title="Message customer on WhatsApp">
+              💬 Chat
+            </a>
+            <button class="btn-action delete" onclick="deleteOrder('${order.id}')" title="Delete order from records">
+              🗑️
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+async function updateOrderStatus(orderId, newStatus) {
+  const order = currentOrders.find(o => o.id === orderId);
+  if (!order) return;
+
+  order.orderStatus = newStatus;
+  order.status = newStatus;
+
+  // 1. Update on server
+  try {
+    await fetch("/api/orders", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: orderId, orderStatus: newStatus, status: newStatus })
+    });
+  } catch (err) {
+    console.warn("Failed to patch /api/orders:", err);
+  }
+
+  // 2. Update in localStorage
+  try {
+    const localOrders = JSON.parse(localStorage.getItem("yova_store_orders") || "[]");
+    const idx = localOrders.findIndex(o => o.id === orderId);
+    if (idx !== -1) {
+      localOrders[idx].orderStatus = newStatus;
+      localOrders[idx].status = newStatus;
+      localStorage.setItem("yova_store_orders", JSON.stringify(localOrders));
+    }
+  } catch (err) {
+    console.warn("LocalStorage update error:", err);
+  }
+
+  // 3. Update in Firestore if configured
+  try {
+    if (db && isFirebaseConfigured()) {
+      await updateDoc(doc(db, "orders", orderId), { orderStatus: newStatus, status: newStatus });
+    }
+  } catch (e) {}
+
+  showAlert(`Order #${orderId} marked as ${newStatus}.`, "success");
+  renderOrdersTable();
+  updateOrdersStats();
+}
+window.updateOrderStatus = updateOrderStatus;
+
+async function deleteOrder(orderId) {
+  if (!confirm(`Are you sure you want to permanently delete Order #${orderId} from records?`)) {
+    return;
+  }
+
+  // 1. Delete on server
+  try {
+    await fetch(`/api/orders/${orderId}`, { method: "DELETE" });
+  } catch (err) {
+    console.warn("Server delete error:", err);
+  }
+
+  // 2. Delete from localStorage
+  try {
+    const localOrders = JSON.parse(localStorage.getItem("yova_store_orders") || "[]");
+    const updated = localOrders.filter(o => o.id !== orderId);
+    localStorage.setItem("yova_store_orders", JSON.stringify(updated));
+  } catch (e) {}
+
+  // 3. Delete from Firestore if configured
+  try {
+    if (db && isFirebaseConfigured()) {
+      await deleteDoc(doc(db, "orders", orderId));
+    }
+  } catch (e) {}
+
+  currentOrders = currentOrders.filter(o => o.id !== orderId);
+  showAlert(`Order #${orderId} deleted from database.`, "success");
+  renderOrdersTable();
+  updateOrdersStats();
+}
+window.deleteOrder = deleteOrder;
+
+function openOrderDetails(orderId) {
+  const order = currentOrders.find(o => o.id === orderId);
+  if (!order || !orderDetailsModal) return;
+
+  selectedOrderForModal = order;
+  const cust = order.customer || {};
+  const items = order.items || [];
+  const status = order.orderStatus || order.status || "Pending";
+  const cleanPhone = (cust.phone || "").replace(/\D/g, "");
+
+  if (modalOrderTitle) modalOrderTitle.textContent = `Order #${order.id}`;
+  if (modalOrderDate) modalOrderDate.textContent = `Date: ${order.date || new Date(order.createdAt || Date.now()).toLocaleDateString("en-IN")}`;
+
+  if (modalCustomerInfo) {
+    modalCustomerInfo.innerHTML = `
+      <div style="font-weight:700; color:var(--text-dark); font-size:14px; margin-bottom:4px;">${cust.name || 'Anonymous Customer'}</div>
+      <div>📱 <strong>${cust.phone || '-'}</strong></div>
+      ${cust.email ? `<div>✉️ ${cust.email}</div>` : ''}
+      <div style="margin-top:6px; color:#334155; line-height:1.4;">
+        ${cust.address || ''}<br>
+        ${cust.city || ''}, ${cust.state || ''} - <strong>${cust.pincode || ''}</strong>
+      </div>
+    `;
+  }
+
+  if (modalPaymentInfo) {
+    modalPaymentInfo.innerHTML = `
+      <div><strong>Payment Method:</strong> ${(order.paymentMethod || 'UPI').toUpperCase()}</div>
+      <div><strong>Payment Status:</strong> <span style="color:#1E7E34; font-weight:700;">${order.paymentStatus || 'Confirmed'}</span></div>
+      <div><strong>Total Amount:</strong> <strong style="color:var(--burgundy); font-size:15px;">₹${(order.total || 0).toLocaleString('en-IN')}</strong></div>
+    `;
+  }
+
+  if (modalStatusSelect) {
+    modalStatusSelect.value = status;
+    modalStatusSelect.className = `status-select ${status.toLowerCase()}`;
+  }
+
+  if (modalOrderItemsList) {
+    modalOrderItemsList.innerHTML = items.map(it => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed rgba(198,154,54,0.3);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="${it.image || 'images/hero_jewellery.jpg'}" alt="${it.name || ''}" style="width:42px; height:42px; object-fit:cover; border-radius:6px; border:1px solid #C69A36;">
+          <div>
+            <div style="font-weight:600; color:var(--burgundy);">${it.name || 'Jewellery Piece'}</div>
+            <div style="font-size:12px; color:var(--text-muted);">Qty: ${it.qty || 1} × ₹${(it.price || 0).toLocaleString('en-IN')}</div>
+          </div>
+        </div>
+        <strong style="color:var(--burgundy);">₹${(it.total || (it.price * it.qty) || 0).toLocaleString('en-IN')}</strong>
+      </div>
+    `).join("");
+  }
+
+  if (modalOrderTotal) {
+    modalOrderTotal.textContent = `₹${(order.total || 0).toLocaleString('en-IN')}`;
+  }
+
+  if (modalWhatsAppCustomerBtn) {
+    const waMsg = `Hi ${cust.name || 'Valued Customer'}, updating you from YOVA Collections regarding your order #${order.id}. Current status: *${status}*. Delivery dispatch will follow shortly!`;
+    modalWhatsAppCustomerBtn.href = `https://wa.me/91${cleanPhone}?text=${encodeURIComponent(waMsg)}`;
+  }
+
+  orderDetailsModal.classList.add("open");
+}
+window.openOrderDetails = openOrderDetails;
+
+// Attach event listeners for tabs & orders controls
+if (tabOrdersBtn) {
+  tabOrdersBtn.addEventListener("click", () => switchAdminTab("orders"));
+}
+if (tabProductsBtn) {
+  tabProductsBtn.addEventListener("click", () => switchAdminTab("products"));
+}
+if (tabReviewsBtn) {
+  tabReviewsBtn.addEventListener("click", () => switchAdminTab("reviews"));
+}
+
+if (refreshReviewsBtn) {
+  refreshReviewsBtn.addEventListener("click", () => fetchReviews());
+}
+if (ordersSearchInput) {
+  ordersSearchInput.addEventListener("input", () => renderOrdersTable());
+}
+if (ordersStatusFilter) {
+  ordersStatusFilter.addEventListener("change", () => renderOrdersTable());
+}
+if (refreshOrdersBtn) {
+  refreshOrdersBtn.addEventListener("click", async () => {
+    await fetchOrders();
+    showAlert("Orders refreshed successfully.", "success");
+  });
+}
+
+if (closeOrderModalBtn) {
+  closeOrderModalBtn.addEventListener("click", () => orderDetailsModal?.classList.remove("open"));
+}
+if (modalCloseActionBtn) {
+  modalCloseActionBtn.addEventListener("click", () => orderDetailsModal?.classList.remove("open"));
+}
+if (modalStatusSelect) {
+  modalStatusSelect.addEventListener("change", (e) => {
+    if (selectedOrderForModal) {
+      updateOrderStatus(selectedOrderForModal.id, e.target.value);
+      modalStatusSelect.className = `status-select ${e.target.value.toLowerCase()}`;
+    }
+  });
+}
+
+// Close modal when clicking outside
+window.addEventListener("click", (e) => {
+  if (e.target === orderDetailsModal) {
+    orderDetailsModal.classList.remove("open");
+  }
+});
+
 // Initialize on page load
 initAuth();
+

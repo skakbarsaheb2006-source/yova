@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "YV-TEST02",
+    "date": "5 October 2026",
+    "createdAt": "2026-10-05T15:21:08.563Z",
+    "customer": {
+      "name": "Ananya Reddy",
+      "phone": "9123456780",
+      "email": "ananya@example.com",
+      "address": "Flat 302, Green Glen Layout, Bellandur",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "pincode": "560103"
+    },
+    "items": [
+      {
+        "id": "kundan-choker-set",
+        "name": "Heritage Kundan Choker Necklace Set",
+        "price": 4999,
+        "qty": 1,
+        "image": "images/hero_jewellery.jpg",
+        "total": 4999
+      },
+      {
+        "id": "peacock-jhumka-earrings",
+        "name": "Mayura Peacock Antique Jhumkas",
+        "price": 1899,
+        "qty": 2,
+        "image": "images/hero_jewellery.jpg",
+        "total": 3798
+      }
+    ],
+    "subtotal": 8797,
+    "shipping": 0,
+    "total": 8797,
+    "paymentMethod": "cod",
+    "paymentStatus": "Pending (COD)",
+    "orderStatus": "Pending",
+    "status": "Pending"
+  },
+  {
+    "id": "YV-TEST01",
+    "date": "5 October 2026",
+    "createdAt": "2026-10-05T15:21:08.557Z",
+    "customer": {
+      "name": "Priyanka Sharma",
+      "phone": "9876543210",
+      "email": "priyanka@example.com",
+      "address": "Plot 42, Jubilee Hills",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "500033"
+    },
+    "items": [
+      {
+        "id": "temple-lakshmi-haram",
+        "name": "Royal Lakshmi Temple Haram",
+        "price": 3499,
+        "qty": 1,
+        "image": "images/hero_jewellery.jpg",
+        "total": 3499
+      }
+    ],
+    "subtotal": 3499,
+    "shipping": 0,
+    "total": 3499,
+    "paymentMethod": "upi",
+    "paymentStatus": "Paid / Confirmed",
+    "orderStatus": "Shipped",
+    "status": "Shipped"
+  }
+]

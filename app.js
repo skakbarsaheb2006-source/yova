@@ -1401,6 +1401,10 @@ function createProductCardHTML(product) {
       </svg>
       <span>${dict.buy_now || 'Buy Now'}</span>
     </button>
+    <button class="btn btn-card-wa" onclick="event.stopPropagation(); window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')" title="Order on WhatsApp">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+      <span>WhatsApp</span>
+    </button>
   ` : `
     <button class="btn btn-out-of-stock" onclick="event.stopPropagation(); window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')" title="Enquire on WhatsApp">
       <span>💬 Request Restock</span>
@@ -1596,6 +1600,10 @@ function openQuickView(productId) {
       </svg>
       <span>${dict.buy_now || 'Buy Now'}</span>
     </button>
+    <button class="btn btn-wa-modal" onclick="window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')" title="Order on WhatsApp">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.83-3.05-.2-.31a8.196 8.196 0 0 1-1.26-4.47c0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.26 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+      <span>Order on WhatsApp</span>
+    </button>
   ` : `
     <button class="btn btn-out-of-stock btn-modal-buy" onclick="window.open('${buildWhatsAppUrl(name, product.price)}', '_blank')">
       <span>💬 Enquire for Restock on WhatsApp</span>
@@ -1711,8 +1719,15 @@ function addToCart(productId, qty = 1, showToastNotification = true) {
 }
 
 function buyNow(productId, qty = 1) {
-  addToCart(productId, qty, false);
-  openCartDrawer();
+  // When a customer clicks "Buy Now", set cart to selected product and price and open checkout immediately
+  appState.cart = [{ id: productId, qty: qty }];
+  saveCart();
+  updateCartUI();
+  closeQuickView();
+  closeCartDrawer();
+  switchPage("checkout");
+  renderCheckoutSummary();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function removeFromCart(productId) {
@@ -1933,7 +1948,7 @@ function updatePaymentSelection(radioEl) {
   }
 }
 
-function handleOrderSubmit(e) {
+async function handleOrderSubmit(e) {
   e.preventDefault();
   if (appState.cart.length === 0) {
     showToast("Cart Empty", "Please add items to cart before completing order.");
@@ -1942,7 +1957,7 @@ function handleOrderSubmit(e) {
 
   const name = document.getElementById("chkFullName").value.trim();
   const phone = document.getElementById("chkPhone").value.trim();
-  const email = document.getElementById("chkEmail").value.trim();
+  const email = (document.getElementById("chkEmail")?.value || "").trim();
   const address = document.getElementById("chkAddress").value.trim();
   const city = document.getElementById("chkCity").value.trim();
   const state = document.getElementById("chkState").value.trim();
@@ -1958,7 +1973,8 @@ function handleOrderSubmit(e) {
   };
 
   const orderId = "YV-" + Math.floor(100000 + Math.random() * 900000);
-  const orderDate = new Date().toLocaleDateString("en-IN", {
+  const now = new Date();
+  const orderDate = now.toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
     year: "numeric"
@@ -1968,84 +1984,147 @@ function handleOrderSubmit(e) {
   const subtotal = getCartSubtotal();
   const lang = appState.currentLang;
 
+  // Build structured items array
+  const orderedItems = cartSnapshot.map(item => {
+    const p = productsData.find(prod => prod.id === item.id) || {};
+    const pName = getProductName(p, "en") || p.id;
+    return {
+      id: item.id,
+      name: pName,
+      price: p.price || 0,
+      qty: item.qty,
+      image: p.image || "images/hero_jewellery.jpg",
+      total: (p.price || 0) * item.qty
+    };
+  });
+
+  // Construct complete order payload
+  const orderData = {
+    id: orderId,
+    date: orderDate,
+    createdAt: now.toISOString(),
+    customer: {
+      name,
+      phone,
+      email,
+      address,
+      city,
+      state,
+      pincode
+    },
+    items: orderedItems,
+    subtotal: subtotal,
+    shipping: 0,
+    total: subtotal,
+    paymentMethod: payMethodValue,
+    paymentStatus: payMethodValue === "cod" ? "Pending (COD)" : "Paid / Confirmed",
+    orderStatus: "Pending",
+    notes: ""
+  };
+
+  // 1. Save order to backend REST API (/api/orders -> orders.json)
+  try {
+    const res = await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData)
+    });
+    if (!res.ok) {
+      console.warn("Backend /api/orders returned error status:", res.status);
+    }
+  } catch (err) {
+    console.warn("Could not POST to /api/orders, saving locally", err);
+  }
+
+  // 2. Save order to localStorage backup
+  try {
+    const localOrders = JSON.parse(localStorage.getItem("yova_store_orders") || "[]");
+    localOrders.unshift(orderData);
+    localStorage.setItem("yova_store_orders", JSON.stringify(localOrders));
+  } catch (err) {
+    console.warn("Could not save order to localStorage:", err);
+  }
+
+  // Save centrally to Firestore so the admin portal can see the order
+  try {
+    if (typeof window.yovaSaveOrder !== "function") throw new Error("Firebase order service is not loaded.");
+    await window.yovaSaveOrder(orderData);
+  } catch (err) {
+    console.error("Firestore order save failed:", err);
+    showToast("Order not synced", "Please contact YOVA Collections on WhatsApp to confirm your order.");
+  }
   // Render Order Confirmation Details
   const successContainer = document.getElementById("orderSuccessDetails");
   if (successContainer) {
-    const itemsHTML = cartSnapshot.map(item => {
-      const p = productsData.find(prod => prod.id === item.id);
-      if (!p) return "";
-      const pName = getProductName(p, lang);
-      return `
-        <div class="confirm-item-row">
-          <span>${pName} (x${item.qty})</span>
-          <strong>₹${(p.price * item.qty).toLocaleString('en-IN')}</strong>
+    const itemsHTML = orderedItems.map(item => `
+      <div class="confirm-item-row" style="display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; border-bottom:1px dashed rgba(198, 154, 54, 0.3);">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <img src="${item.image}" alt="${item.name}" style="width:48px; height:48px; object-fit:cover; border-radius:6px; border:1px solid #C69A36;">
+          <div style="text-align:left;">
+            <div style="font-weight:600; color:#3D0F1A;">${item.name}</div>
+            <div style="font-size:0.85rem; color:#6B635B;">Qty: ${item.qty} × ₹${item.price.toLocaleString('en-IN')}</div>
+          </div>
         </div>
-      `;
-    }).join("");
+        <strong style="color:#3D0F1A;">₹${item.total.toLocaleString('en-IN')}</strong>
+      </div>
+    `).join("");
 
     successContainer.innerHTML = `
-      <div class="order-id-badge">Order ID: <strong>${orderId}</strong></div>
-      <div class="order-date-text">Placed on ${orderDate}</div>
+      <div class="order-id-badge" style="background:#FAF5EB; color:#8F6918; padding:0.4rem 1.2rem; border-radius:20px; font-weight:700; display:inline-block; margin-bottom:0.75rem; border:1px solid rgba(198, 154, 54, 0.4);">Order ID: <strong>${orderId}</strong></div>
+      <div class="order-date-text" style="color:#6B635B; font-size:0.9rem; margin-bottom:1.25rem;">Placed directly on website on ${orderDate}</div>
 
-      <div class="order-confirmation-grid">
-        <div class="order-box">
-          <h4>📍 Shipping Address</h4>
-          <p><strong>${name}</strong><br>
-          ${address}<br>
-          ${city}, ${state} - ${pincode}<br>
-          📱 Phone: ${phone}${email ? '<br>✉️ Email: ' + email : ''}</p>
+      <div class="order-confirmation-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; text-align:left; margin-bottom:1.5rem;">
+        <div class="order-box" style="background:#FFFDF9; border:1px solid rgba(198, 154, 54, 0.3); border-radius:10px; padding:1.2rem;">
+          <h4 style="color:#3D0F1A; margin-bottom:0.6rem; font-family:'Cinzel', serif; font-size:1rem; border-bottom:1px solid rgba(198, 154, 54, 0.2); padding-bottom:4px;">📍 Delivery Address</h4>
+          <p style="color:#1E1A17; font-size:0.875rem; line-height:1.6; margin:0;">
+            <strong>${name}</strong><br>
+            ${address}<br>
+            ${city}, ${state} - ${pincode}<br>
+            📱 Phone: <strong>${phone}</strong>${email ? '<br>✉️ Email: ' + email : ''}
+          </p>
         </div>
 
-        <div class="order-box">
-          <h4>💳 Payment & Delivery</h4>
-          <p><strong>Payment Method:</strong> ${paymentLabels[payMethodValue] || payMethodValue}<br>
-          <strong>Payment Status:</strong> ${payMethodValue === 'cod' ? 'Pending (Pay on Delivery)' : 'Confirmed'}<br>
-          <strong>Estimated Delivery:</strong> 3 - 5 Business Days</p>
+        <div class="order-box" style="background:#FFFDF9; border:1px solid rgba(198, 154, 54, 0.3); border-radius:10px; padding:1.2rem;">
+          <h4 style="color:#3D0F1A; margin-bottom:0.6rem; font-family:'Cinzel', serif; font-size:1rem; border-bottom:1px solid rgba(198, 154, 54, 0.2); padding-bottom:4px;">💳 Order & Payment Status</h4>
+          <p style="color:#1E1A17; font-size:0.875rem; line-height:1.6; margin:0;">
+            <strong>Payment Method:</strong> ${paymentLabels[payMethodValue] || payMethodValue}<br>
+            <strong>Payment Status:</strong> <span style="color:#1E7E34; font-weight:600;">${orderData.paymentStatus}</span><br>
+            <strong>Order Status:</strong> <span style="background:#E8F5E9; color:#1E7E34; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:700;">Pending Confirmation</span><br>
+            <strong>Dispatch Time:</strong> Express Pan-India Delivery (3-5 Days)
+          </p>
         </div>
       </div>
 
-      <div class="order-items-breakdown">
-        <h4>🛍️ Order Items</h4>
+      <div class="order-items-breakdown" style="background:#FFFFFF; border:1px solid rgba(198, 154, 54, 0.3); border-radius:10px; padding:1.2rem; text-align:left; margin-bottom:1.5rem;">
+        <h4 style="color:#3D0F1A; margin-bottom:0.75rem; font-family:'Cinzel', serif; font-size:1rem; border-bottom:1px solid rgba(198, 154, 54, 0.2); padding-bottom:4px;">🛍️ Order Summary (${orderedItems.length} piece${orderedItems.length > 1 ? 's' : ''})</h4>
         ${itemsHTML}
-        <div class="confirm-total-line">
-          <span>Total Amount:</span>
-          <strong class="confirm-total-val">₹${subtotal.toLocaleString('en-IN')}</strong>
+        <div class="confirm-total-line" style="display:flex; justify-content:space-between; align-items:center; padding-top:0.75rem; font-size:1.1rem;">
+          <span>Total Amount Payable:</span>
+          <strong class="confirm-total-val" style="color:#3D0F1A; font-size:1.3rem;">₹${subtotal.toLocaleString('en-IN')}</strong>
         </div>
       </div>
     `;
   }
 
-  // Build structured WhatsApp order message
-  let waMsg = `🛍️ *NEW WEBSITE ORDER - YOVA COLLECTIONS*\n`;
+  // Build structured WhatsApp tracking / inquiry link
+  let waMsg = `🛍️ *WEBSITE ORDER PLACED - YOVA COLLECTIONS*\n`;
   waMsg += `*Order ID:* ${orderId}\n`;
   waMsg += `*Date:* ${orderDate}\n\n`;
-
-  waMsg += `👤 *CUSTOMER DETAILS:*\n`;
+  waMsg += `👤 *CUSTOMER:*\n`;
   waMsg += `• *Name:* ${name}\n`;
   waMsg += `• *Phone:* ${phone}\n`;
   if (email) waMsg += `• *Email:* ${email}\n`;
   waMsg += `• *Address:* ${address}, ${city}, ${state} - ${pincode}\n\n`;
-
-  waMsg += `💳 *PAYMENT METHOD:*\n`;
-  waMsg += `• ${paymentLabels[payMethodValue] || payMethodValue}\n\n`;
-
-  waMsg += `📦 *ORDERED ITEMS:*\n`;
-  cartSnapshot.forEach((item, index) => {
-    const p = productsData.find(prod => prod.id === item.id);
-    if (p) {
-      const pName = p.name[lang] || p.name.en;
-      waMsg += `${index + 1}. *${pName}* (Qty: ${item.qty}) - ₹${(p.price * item.qty).toLocaleString('en-IN')}\n`;
-    }
+  waMsg += `💳 *PAYMENT METHOD:* ${paymentLabels[payMethodValue] || payMethodValue}\n\n`;
+  waMsg += `📦 *ITEMS:*\n`;
+  orderedItems.forEach((it, idx) => {
+    waMsg += `${idx + 1}. *${it.name}* (Qty: ${it.qty}) - ₹${it.total.toLocaleString('en-IN')}\n`;
   });
-
   waMsg += `\n💰 *TOTAL AMOUNT:* ₹${subtotal.toLocaleString('en-IN')}\n`;
   waMsg += `🚚 *Shipping:* FREE (Pan-India Express Delivery)\n\n`;
-  waMsg += `Please confirm order availability and dispatch details. Thank you!`;
+  waMsg += `I have placed this order directly on the website. Please confirm dispatch details. Thank you!`;
 
   const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waMsg)}`;
-  window.open(waUrl, "_blank");
-
-  // Set pre-filled WhatsApp message on the "Order Confirmed" button
   const orderConfirmedBtn = document.getElementById("orderConfirmedWaBtn");
   if (orderConfirmedBtn) {
     orderConfirmedBtn.href = waUrl;
@@ -2054,9 +2133,11 @@ function handleOrderSubmit(e) {
   // Clear cart and update UI
   appState.cart = [];
   saveCart();
+  updateCartUI();
 
-  // Navigate to confirmation page
+  // Switch to confirmation page view
   switchPage("order-success");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function showToast(title, message, image) {

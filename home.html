@@ -466,6 +466,35 @@
         </div>
       </section>
 
+      <!-- Customer Review Form -->
+      <section class="section-padding bg-cream" aria-labelledby="reviewFormTitle">
+        <div class="container" style="max-width:720px;">
+          <div class="panel-card" style="background:#FFFDF9;border:1px solid rgba(198,154,54,.35);border-radius:14px;padding:24px;">
+            <h2 id="reviewFormTitle" style="font-family:'Cinzel',serif;color:#3D0F1A;margin-bottom:8px;">Share Your Product Review</h2>
+            <p style="color:#6B635B;margin-bottom:16px;">Tell us about your YOVA Collections purchase.</p>
+            <form id="customerReviewForm">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+                <label style="display:grid;gap:6px;color:#3D0F1A;font-weight:600;">Your name
+                  <input name="customerName" type="text" maxlength="60" required style="padding:11px;border:1px solid #D8C9A6;border-radius:8px;">
+                </label>
+                <label style="display:grid;gap:6px;color:#3D0F1A;font-weight:600;">Product name
+                  <input name="productName" type="text" maxlength="100" required style="padding:11px;border:1px solid #D8C9A6;border-radius:8px;">
+                </label>
+              </div>
+              <label style="display:grid;gap:6px;color:#3D0F1A;font-weight:600;margin-top:12px;">Rating
+                <select name="rating" required style="padding:11px;border:1px solid #D8C9A6;border-radius:8px;">
+                  <option value="5">★★★★★ - Excellent</option><option value="4">★★★★ - Very good</option><option value="3">★★★ - Good</option><option value="2">★★ - Fair</option><option value="1">★ - Poor</option>
+                </select>
+              </label>
+              <label style="display:grid;gap:6px;color:#3D0F1A;font-weight:600;margin-top:12px;">Your review
+                <textarea name="reviewText" rows="4" maxlength="1000" required style="padding:11px;border:1px solid #D8C9A6;border-radius:8px;resize:vertical;"></textarea>
+              </label>
+              <button type="submit" class="btn btn-gold" style="margin-top:14px;">Submit Review</button>
+              <p id="reviewSubmitStatus" role="status" aria-live="polite" style="margin-top:10px;color:#6B635B;"></p>
+            </form>
+          </div>
+        </div>
+      </section>
       <!-- Instagram Showcase Banner -->
       <section class="insta-banner-section">
         <div class="container text-center">
@@ -1159,6 +1188,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <script src="app.js"></script>
+  <script type="module" src="store-data.js"></script>
 
 </body>
 </html>
