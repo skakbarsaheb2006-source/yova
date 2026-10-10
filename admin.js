@@ -207,7 +207,8 @@ loginForm.addEventListener("submit", async (e) => {
     } else if (error.code === "auth/too-many-requests") {
       msg = "Too many failed attempts. Please try again later.";
     }
-    showAlert(msg, "error");
+    const errorCode = error?.code || "unknown";
+    showAlert(`${msg} (${errorCode})`, "error");
   } finally {
     loginSubmitBtn.disabled = false;
     loginSubmitBtn.innerHTML = "Sign In to Dashboard &rarr;";
